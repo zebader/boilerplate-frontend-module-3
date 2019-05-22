@@ -58,7 +58,6 @@ Customer dashboard and flow
 | `post` | `/auth/signup` | SignupComponent| anon only| signup form, link to login, navigate to dashboard after signup|
 | `post` | `/auth/login` | LoginComponent | anon only |login form, link to signup, navigate to dashboard after login |
 | `post` | `/auth/logout` | n/a| anon only | navigate to splash after logout, expire session |
-
 | `get`  | `/bussines/workers` | WorkersListComponent| bussines only | shows all workers, links to add, edit or delete worker
 | `get`  | `/bussines/promotions` | PromotionListComponent| bussines only | shows all promotions, links to add, edit or delete promotion
 | `post`  | `/bussines/workers/add` | WorkersAddComponent| bussines only | Create a worker and and redirect to dashboard
@@ -69,7 +68,6 @@ Customer dashboard and flow
 | `delete` | `/bussines/promotions/:promoId` | n/a | bussines only | Delete a promotion and redirect to dashboard
 | `get`  | `/bussines/:id` | BussinesDetailsComponent| bussines only | show bussines information and redirect to dashboard
 | `put`  | `/bussines/:id/update` | BussinesDetailsComponent| bussines only | edit bussines information and redirect to dashboard
-
 | `get`  | `/customer` | CustomerDashboardListComponent| customer only | shows all pinned bussines from customer, link to wallet, bussines and profile
 | `get`  | `/customer/details` | CustomerDetailsComponent| customer only | Show user details
 | `put`  | `/customer/details/update` | CustomerDetailsComponent| customer only | Edit user details
@@ -81,71 +79,70 @@ Customer dashboard and flow
 | `put`  | `/promotions/:id/:workerId/update` | TipWorkerComponent | customer only | add/ update tip, rate to worker redirect to updated /promotions/:id 
 | `get`  | `/promotions/:id/:promoId` | GetPromotionDetailsComponent | customer only | show promotion details and if avaliable QR code
 | `post`  | `/promotions/:id/:promoId/add` | GetPromotionDetailsComponent | customer only | gt the promotion push user to promoID and redirect to updated /promotions/:id
-
 | `get` | `**` | NotFoundComponent | public | 
 
 ## Components
 
-SplashComponent
--- SplashSliderComponent
--- SignUpButtonComponent
+- SplashComponent
+  - SplashSliderComponent
+  - SignUpButtonComponent
 
-SignupComponent
--- SignUpCustomerComponent
--- SignUpBussinesComponent
+- SignupComponent
+  - SignUpCustomerComponent
+  - SignUpBussinesComponent
 
-LogInComponent
+- LogInComponent
 
-BussinesDetailsComponent
+- BussinesDetailsComponent
 
-WorkersListComponent
--- BussinesDetailsCardComponent
--- WorkersCardListComponent
----- SearchWorkerComponent
----- WorkerCardComponent
----- AddWorkerButtonComponent
+- WorkersListComponent
+  - BussinesDetailsCardComponent
+  - WorkersCardListComponent
+    - SearchWorkerComponent
+    - WorkerCardComponent
+    - AddWorkerButtonComponent
 
-PromotionListComponent
--- BussinesDetailsCardComponent
--- PromotionListCardComponent
----- SearchWorkerComponent
----- PromotionCardComponent
----- AddPromotionButtonComponent
+- PromotionListComponent
+  - BussinesDetailsCardComponent
+  - PromotionListCardComponent
+    - SearchWorkerComponent
+    - PromotionCardComponent
+    - AddPromotionButtonComponent
 
-WorkersAddComponent
+- WorkersAddComponent
 
-PromotionAddComponent
+- PromotionAddComponent
 
-CustomerDashboardListComponent
--- WalletTopBarComponent
--- CustomerDetailsCardComponent
--- PinnedBussinesCardListComponent
----- SearchPinnedBussinesComponent
----- PinnedBussinesCardComponent
--- FooterNavBarComponent
+- CustomerDashboardListComponent
+  - WalletTopBarComponent
+  - CustomerDetailsCardComponent
+  - PinnedBussinesCardListComponent
+    - SearchPinnedBussinesComponent
+    - PinnedBussinesCardComponent
+  - FooterNavBarComponent
 
-CustomerDetailsComponent
+- CustomerDetailsComponent
 
-WalletComponent
+- WalletComponent
 
-AvaliablePromotionsComponent
--- WalletTopBarComponent
--- AvaliablePromotionsCardListComponent
----- AvaliablePromotionsCardComponent
--- FooterNavBarComponent
+- AvaliablePromotionsComponent
+  - WalletTopBarComponent
+  - AvaliablePromotionsCardListComponent
+    - AvaliablePromotionsCardComponent
+  - FooterNavBarComponent
 
-PromotionComponent
--- WalletTopBarComponent
--- PromotionBussinesHeaderComponent
--- PromotionProgressCardComponent
--- PromotionsCardListComponent
----- SearchPromotionsComponent
----- PromotionsCardComponent
--- FooterNavBarComponent
+- PromotionComponent
+  - WalletTopBarComponent
+  - PromotionBussinesHeaderComponent
+  - PromotionProgressCardComponent
+  - PromotionsCardListComponent
+    - SearchPromotionsComponent
+    - PromotionsCardComponent
+  - FooterNavBarComponent
 
-TipWorkerComponent
+- TipWorkerComponent
 
-GetPromotionDetailsComponent
+- GetPromotionDetailsComponent
 
 NotFoundComponent 
 
@@ -299,8 +296,8 @@ totalPoints - Number
     - points
   - validation
     - fields not empty (422)
-    - productId exists (404) --------------------------------
-    - same points (404) -----------------------------------
+    - productId exists (404) 
+    - same points (404) 
   - Update promotion in bussines collection
   - 200 with promotion object
 - DELETE /bussines/workers/:workerId
