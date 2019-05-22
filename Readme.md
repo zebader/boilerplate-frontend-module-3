@@ -155,7 +155,29 @@ NotFoundComponent
   - auth.me()
   - auth.getUser() // synchronous
 - Bussines Service
-  - restaurant.search(terms) axios
+  - bussines.getAllWorkers()
+  - bussines.addWorker()
+  - bussines.getAllPromotions()
+  - bussines.addPromotion()
+  - bussines.updateWorker(workerdId,body)
+  - bussines.updatePromotion(promoId,body)
+  - bussines.deleteWorker(workeIid)
+  - bussines.deletePromotion(promoId)
+  - bussines.getAllBussineses()
+  - bussines.getBussines(id)
+  - bussines.updateBussines(id,body)
+- Customer Service
+  - customer.getCustomerDetails(id)
+  - customer.updateCustomerDetails(id,body)
+  - customer.getWallet(id)
+  - customer.updateWallet(id,body)
+  - customer.getAllpromotion()
+  - customer.getPromotion(id)
+  - customer.getAllworkers()
+  - customer.getWorker(workerId)
+  - customer.updateWorker(workerId,body)
+  - customer.getPromotion(promoId)
+  - customer.updatePromotion(promoId, body)
 
 # Server
 
