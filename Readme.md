@@ -4,37 +4,37 @@ KING OF TIPS
 
 ## Description
 
-King of Tips is an app that help bussines to improve the customer service and the customer retention/adqusition by creating a gamifiyed promotion, where the customers can tip the workers and get points in exchange to get exclusive discounts or gifts.
+King of Tips is an app that help business to improve the customer service and the customer retention/adqusition by creating a gamifiyed promotion, where the customers can tip the workers and get points in exchange to get exclusive discounts or gifts.
 
 ## User Stories
 
 -  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
--  **Signup:** As an anon I can sign up as a customer so that I can start tiping and getting points, or as a bussines so I can start adding workers or promotions.
+-  **Signup:** As an anon I can sign up as a customer so that I can start tiping and getting points, or as a business so I can start adding workers or promotions.
 -  **Login:** As a user I can login to the platform so that I can see my dashboard
 -  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Manage worker** As a bussines I can add, edit or delete workers to my dashboard
--  **Manage Promotion** As a bussines I can add, edit or delete promotions to my dashboard
+-  **Manage worker** As a business I can add, edit or delete workers to my dashboard
+-  **Manage Promotion** As a business I can add, edit or delete promotions to my dashboard
 -  **User profile** As a user I can modify my personal information
 -  **Manage Wallet** As a customer I can add or remove balance in my wallet so I can use it for tip workers from every screen
--  **Pin bussines** As a customer I can pin bussines with promotions to my dashboard
--  **Search Promotions** As a customer I want to search bussines with promotions
--  **See workers** As a customer I want to see all the workers I can tip in a bussines
--  **See promo details** As a customer I want to see the promotion detail of each bussines
+-  **Pin business** As a customer I can pin business with promotions to my dashboard
+-  **Search Promotions** As a customer I want to search business with promotions
+-  **See workers** As a customer I want to see all the workers I can tip in a business
+-  **See promo details** As a customer I want to see the promotion detail of each business
 -  **Tip and rate** As a customer I can tip and rate the worker so I can get points
 -  **Get promotion** As a customer I can get the promotion if I have enough points
 
 ## Backlog
 
 Others
-- Create Workers profile, so they can read comments, recieve messages, get paid (create roles in bussines profile?)
-- Send to ubication (google maps) by clicking the name in the bussines profile
+- Create Workers profile, so they can read comments, recieve messages, get paid (create roles in business profile?)
+- Send to ubication (google maps) by clicking the name in the business profile
 - See other user profile
 - Send points or cash to them (make gifts)
 
 Sign UP:
 - Google Auth
 
-Bussines dashboard and flow
+business dashboard and flow
 - Pay workers
 - Get benefits ( % of tips)
 - Create Factor for points (how difficult is to get the points)
@@ -45,7 +45,7 @@ Customer dashboard and flow
 - Filter shopType
 - Create a ranking by Total points (special promotions if you are the top 10 (points x2, etc...))
 - Status by amount of points
-- Add Hot and all filter in the bussines promotions screen (spotlighted promos)
+- Add Hot and all filter in the business promotions screen (spotlighted promos)
 - Add comments when tipping
 - Read comments from workers
   
@@ -58,23 +58,23 @@ Customer dashboard and flow
 | `post` | `/auth/signup` | SignupComponent| anon only| signup form, link to login, navigate to dashboard after signup|
 | `post` | `/auth/login` | LoginComponent | anon only |login form, link to signup, navigate to dashboard after login |
 | `post` | `/auth/logout` | n/a| anon only | navigate to splash after logout, expire session |
-| `get`  | `/bussines/workers` | WorkersListComponent| bussines only | shows all workers, links to add, edit or delete worker
-| `get`  | `/bussines/promotions` | PromotionListComponent| bussines only | shows all promotions, links to add, edit or delete promotion
-| `post`  | `/bussines/workers/add` | WorkersAddComponent| bussines only | Create a worker and and redirect to dashboard
-| `post`  | `/bussines/promotions/add` | PromotionAddComponent| bussines only | Create a promotion and redirect to dashboard
-| `put` | `/bussines/workers/:workerId/update` | WorkersAddComponent  | bussines only | Edit a worker and redirect to dashboard
-| `put` | `/bussines/promotions/:promoId/update` | PromotionAddComponent | bussines only | Edit a promotion and redirect to dashboard
-| `delete` | `/bussines/workers/:workerId` |n/a | bussines only | Delete a worker and redirect to dashboard
-| `delete` | `/bussines/promotions/:promoId` | n/a | bussines only | Delete a promotion and redirect to dashboard
-| `get`  | `/bussines/:id` | BussinesDetailsComponent| bussines only | show bussines information and redirect to dashboard
-| `put`  | `/bussines/:id/update` | BussinesDetailsComponent| bussines only | edit bussines information and redirect to dashboard
-| `get`  | `/customer` | CustomerDashboardListComponent| customer only | shows all pinned bussines from customer, link to wallet, bussines and profile
+| `get`  | `/business/workers` | WorkersListComponent| business only | shows all workers, links to add, edit or delete worker
+| `get`  | `/business/promotions` | PromotionListComponent| business only | shows all promotions, links to add, edit or delete promotion
+| `post`  | `/business/workers/add` | WorkersAddComponent| business only | Create a worker and and redirect to dashboard
+| `post`  | `/business/promotions/add` | PromotionAddComponent| business only | Create a promotion and redirect to dashboard
+| `put` | `/business/workers/:workerId/update` | WorkersAddComponent  | business only | Edit a worker and redirect to dashboard
+| `put` | `/business/promotions/:promoId/update` | PromotionAddComponent | business only | Edit a promotion and redirect to dashboard
+| `delete` | `/business/workers/:workerId` |n/a | business only | Delete a worker and redirect to dashboard
+| `delete` | `/business/promotions/:promoId` | n/a | business only | Delete a promotion and redirect to dashboard
+| `get`  | `/business/:id` | businessDetailsComponent| business only | show business information and redirect to dashboard
+| `put`  | `/business/:id/update` | businessDetailsComponent| business only | edit business information and redirect to dashboard
+| `get`  | `/customer` | CustomerDashboardListComponent| customer only | shows all pinned business from customer, link to wallet, business and profile
 | `get`  | `/customer/details` | CustomerDetailsComponent| customer only | Show user details
 | `put`  | `/customer/details/update` | CustomerDetailsComponent| customer only | Edit user details
 | `get`  | `/customer/wallet` | WalletComponent| customer only | render wallet to add balance
 | `put`  | `/customer/wallet/update` | WalletComponent | customer only | manage balance and redirect to /customer
-| `get`  | `/promotions` | AvaliablePromotionsComponent| customer only | List of the bussines with promotions link to bussines profile
-| `get`  | `/promotions/:id` | PromotionComponent| customer only | show bussines promotion profile with points, promotion progress bar and workers to tip
+| `get`  | `/promotions` | AvaliablePromotionsComponent| customer only | List of the business with promotions link to business profile
+| `get`  | `/promotions/:id` | PromotionComponent| customer only | show business promotion profile with points, promotion progress bar and workers to tip
 | `get`  | `/promotions/:id/:workerId` | TipWorkerComponent | customer only | show form to tip and rate worker
 | `put`  | `/promotions/:id/:workerId/update` | TipWorkerComponent | customer only | add/ update tip, rate to worker redirect to updated /promotions/:id 
 | `get`  | `/promotions/:id/:promoId` | GetPromotionDetailsComponent | customer only | show promotion details and if avaliable QR code
@@ -89,21 +89,21 @@ Customer dashboard and flow
 
 - SignupComponent
   - SignUpCustomerComponent
-  - SignUpBussinesComponent
+  - SignUpbusinessComponent
 
 - LogInComponent
 
-- BussinesDetailsComponent
+- businessDetailsComponent
 
 - WorkersListComponent
-  - BussinesDetailsCardComponent
+  - businessDetailsCardComponent
   - WorkersCardListComponent
     - SearchWorkerComponent
     - WorkerCardComponent
     - AddWorkerButtonComponent
 
 - PromotionListComponent
-  - BussinesDetailsCardComponent
+  - businessDetailsCardComponent
   - PromotionListCardComponent
     - SearchWorkerComponent
     - PromotionCardComponent
@@ -116,9 +116,9 @@ Customer dashboard and flow
 - CustomerDashboardListComponent
   - WalletTopBarComponent
   - CustomerDetailsCardComponent
-  - PinnedBussinesCardListComponent
-    - SearchPinnedBussinesComponent
-    - PinnedBussinesCardComponent
+  - PinnedbusinessCardListComponent
+    - SearchPinnedbusinessComponent
+    - PinnedbusinessCardComponent
   - FooterNavBarComponent
 
 - CustomerDetailsComponent
@@ -133,7 +133,7 @@ Customer dashboard and flow
 
 - PromotionComponent
   - WalletTopBarComponent
-  - PromotionBussinesHeaderComponent
+  - PromotionbusinessHeaderComponent
   - PromotionProgressCardComponent
   - PromotionsCardListComponent
     - SearchPromotionsComponent
@@ -154,18 +154,18 @@ NotFoundComponent
   - auth.logout()
   - auth.me()
   - auth.getUser() // synchronous
-- Bussines Service
-  - bussines.getAllWorkers()
-  - bussines.addWorker()
-  - bussines.getAllPromotions()
-  - bussines.addPromotion()
-  - bussines.updateWorker(workerdId,body)
-  - bussines.updatePromotion(promoId,body)
-  - bussines.deleteWorker(workeIid)
-  - bussines.deletePromotion(promoId)
-  - bussines.getAllBussineses()
-  - bussines.getBussines(id)
-  - bussines.updateBussines(id,body)
+- business Service
+  - business.getAllWorkers()
+  - business.addWorker()
+  - business.getAllPromotions()
+  - business.addPromotion()
+  - business.updateWorker(workerdId,body)
+  - business.updatePromotion(promoId,body)
+  - business.deleteWorker(workeIid)
+  - business.deletePromotion(promoId)
+  - business.getAllbusinesses()
+  - business.getbusiness(id)
+  - business.updatebusiness(id,body)
 - Customer Service
   - customer.getCustomerDetails(id)
   - customer.updateCustomerDetails(id,body)
@@ -183,7 +183,7 @@ NotFoundComponent
 
 ## Models
 
-Bussines model
+business model
 
 ```
 username - String // required
@@ -213,7 +213,7 @@ pointsFactor - Number
 benefits - Number
 totalPoints - Number
 spotlighted - Boolean
-bussinesType - String
+businessType - String
 
 ```
 Customer model
@@ -226,8 +226,8 @@ userType - String
 imgurl - String
 location - String
 balance - Number // required
-pinnedBussines - [{
-  bussinesID - [ type: ObjetcId - ref :'Bussines']
+pinnedbusiness - [{
+  businessID - [ type: ObjetcId - ref :'business']
   points - Number
 }]
 --------------------------backlog
@@ -270,11 +270,11 @@ totalPoints - Number
   - body: (empty)
   - 204
 
-- GET /bussines/workers
+- GET /business/workers
   - 200 with array of workers
-- GET /bussines/promotions
+- GET /business/promotions
   - 200 with array of promotions
-- POST /bussines/workers/add
+- POST /business/workers/add
   - 401 if user logged in
   - body:
     - Worker name
@@ -283,9 +283,9 @@ totalPoints - Number
   - validation
     - fields not empty (422)
     - workerId exists (404) 
-  - store worker in bussines collection
+  - store worker in business collection
   - 200 with worker object
-- POST /bussines/promotions/add
+- POST /business/promotions/add
   - 401 if user logged in
   - body:
     - Product/service name
@@ -296,9 +296,9 @@ totalPoints - Number
     - fields not empty (422)
     - productId exists (404) 
     - points exists (404) 
-  - store promotion in bussines collection
+  - store promotion in business collection
   - 200 with promotion object
-- PUT /bussines/workers/:workerId/update
+- PUT /business/workers/:workerId/update
   - 401 if user logged in
   - body:
     - Worker name
@@ -307,9 +307,9 @@ totalPoints - Number
   - validation
     - fields not empty (422)
     - workerId exists (404) 
-  - update worker in bussines collection
+  - update worker in business collection
   - 200 with worker object
-- PUT /bussines/promotions/:promoId/update
+- PUT /business/promotions/:promoId/update
   - 401 if user logged in
   - body:
     - Product/service name
@@ -320,21 +320,21 @@ totalPoints - Number
     - fields not empty (422)
     - productId exists (404) 
     - same points (404) 
-  - Update promotion in bussines collection
+  - Update promotion in business collection
   - 200 with promotion object
-- DELETE /bussines/workers/:workerId
+- DELETE /business/workers/:workerId
   - 401 if user logged in
   - validation
     - workerId exists (404) 
-  - remove from bussines collection
-- DELETE /bussines/promotions/:promoId
+  - remove from business collection
+- DELETE /business/promotions/:promoId
   - 401 if user logged in
   - validation
     - promoId exists (404) 
-  - remove from bussines collection
-- GET /bussines/:id
-  - 200 with bussines data
-- PUT /bussines/:id/update
+  - remove from business collection
+- GET /business/:id
+  - 200 with business data
+- PUT /business/:id/update
   - 401 if user logged in
   - body:
     - username
@@ -342,10 +342,10 @@ totalPoints - Number
     - edit img
   - validation
     - fields not empty (422)
-    - Update bussines in bussines collection
+    - Update business in business collection
 
 - GET /customer
-  - 200 with array of pinnedBussines
+  - 200 with array of pinnedbusiness
 - GET /customer/details
   - 200 form with customer details
 - PUT /customer/details/update
@@ -368,7 +368,7 @@ totalPoints - Number
     - Update balance in customer collection
 
 - GET /promotions
-  - 200 array of all bussines
+  - 200 array of all business
 - GET /promotions/:id
 valido? monogoose validar isvalid
   - 200 array workers and promotion details card
@@ -381,7 +381,7 @@ valido? monogoose validar isvalid
     - rating
   - validation
     - fields not empty (422)
-  - Update worker in bussines collection
+  - Update worker in business collection
   - 200 with worker object redirect to /promotions/:id
 - GET /promotions/:id/:promoId
   - 200 array workers and promotion details card
