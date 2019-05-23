@@ -58,8 +58,6 @@ Customer dashboard and flow
 | `post` | `/auth/signup` | SignupComponent| anon only| signup form, link to login, navigate to dashboard after signup|
 | `post` | `/auth/login` | LoginComponent | anon only |login form, link to signup, navigate to dashboard after login |
 | `post` | `/auth/logout` | n/a| anon only | navigate to splash after logout, expire session |
-| `get`  | `/business/workers` | WorkersListComponent| business only | shows all workers, links to add, edit or delete worker
-| `get`  | `/business/promotions` | PromotionListComponent| business only | shows all promotions, links to add, edit or delete promotion
 | `post`  | `/business/workers/add` | WorkersAddComponent| business only | Create a worker and and redirect to dashboard
 | `post`  | `/business/promotions/add` | PromotionAddComponent| business only | Create a promotion and redirect to dashboard
 | `put` | `/business/workers/:workerId/update` | WorkersAddComponent  | business only | Edit a worker and redirect to dashboard
@@ -192,21 +190,9 @@ password - String // required
 userType - String
 imgurl - String
 location - String // required
-mapLocation - String
-workers - [{
-  workerId - String // required
-  name - String // required
-  type - String
-  rating - []
-  tips - Number
-}]
-promotion - [{
-  promoID -String // required
-  name - String // required
-  type - String
-  pointsToUnlock - Number // required
-  userID - [ type:ObjetcId - ref :'Customer']
-  qrCode - String
+workers - [ type:ObjetcId - ref :'Worker']
+promotion - [ type:ObjetcId - ref :'Promotion']
+
 }]
 --------------------------backlog
 pointsFactor - Number
@@ -214,6 +200,7 @@ benefits - Number
 totalPoints - Number
 spotlighted - Boolean
 businessType - String
+mapLocation - String
 
 ```
 Customer model
@@ -235,6 +222,27 @@ status - String
 totalPoints - Number
 
 ```
+Worker model
+
+```
+
+  name - String // required
+  type - String
+  rating - []
+  tips - Number
+
+```
+Promotion model
+
+```
+  name - String // required
+  type - String
+  pointsToUnlock - Number // required
+  userID - [ type:ObjetcId - ref :'Customer']
+  qrCode - String
+
+```
+
 
 ## API Endpoints (backend routes)
 
@@ -270,10 +278,6 @@ totalPoints - Number
   - body: (empty)
   - 204
 
-- GET /business/workers
-  - 200 with array of workers
-- GET /business/promotions
-  - 200 with array of promotions
 - POST /business/workers/add
   - 401 if user logged in
   - body:
