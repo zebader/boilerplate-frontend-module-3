@@ -60,15 +60,15 @@ Customer dashboard and flow
 | `post` | `/auth/logout` | n/a| anon only | navigate to splash after logout, expire session |
 | `post`  | `/business/workers/add` | WorkersAddComponent| business only | Create a worker and and redirect to dashboard
 | `post`  | `/business/promotions/add` | PromotionAddComponent| business only | Create a promotion and redirect to dashboard
-| `put` | `/business/workers/:workerId/update` | WorkersAddComponent  | business only | Edit a worker and redirect to dashboard
-| `put` | `/business/promotions/:promoId/update` | PromotionAddComponent | business only | Edit a promotion and redirect to dashboard
-| `delete` | `/business/workers/:workerId` |n/a | business only | Delete a worker and redirect to dashboard
-| `delete` | `/business/promotions/:promoId` | n/a | business only | Delete a promotion and redirect to dashboard
+| `put` | `/business/workers/:id/update` | WorkersAddComponent  | business only | Edit a worker and redirect to dashboard
+| `put` | `/business/promotions/:id/update` | PromotionAddComponent | business only | Edit a promotion and redirect to dashboard
+| `delete` | `/business/workers/:id/delete` |n/a | business only | Delete a worker and redirect to dashboard
+| `delete` | `/business/promotions/:id/delete` | n/a | business only | Delete a promotion and redirect to dashboard
 | `get`  | `/business/:id` | businessDetailsComponent| business only | show business information and redirect to dashboard
 | `put`  | `/business/:id/update` | businessDetailsComponent| business only | edit business information and redirect to dashboard
 | `get`  | `/customer` | CustomerDashboardListComponent| customer only | shows all pinned business from customer, link to wallet, business and profile
-| `get`  | `/customer/details` | CustomerDetailsComponent| customer only | Show user details
-| `put`  | `/customer/details/update` | CustomerDetailsComponent| customer only | Edit user details
+| `get`  | `/customer/:id` | CustomerDetailsComponent| customer only | Show user details
+| `put`  | `/customer/:id/update` | CustomerDetailsComponent| customer only | Edit user details
 | `get`  | `/customer/wallet` | WalletComponent| customer only | render wallet to add balance
 | `put`  | `/customer/wallet/update` | WalletComponent | customer only | manage balance and redirect to /customer
 | `get`  | `/promotions` | AvaliablePromotionsComponent| customer only | List of the business with promotions link to business profile
@@ -76,7 +76,7 @@ Customer dashboard and flow
 | `get`  | `/promotions/:id/:workerId` | TipWorkerComponent | customer only | show form to tip and rate worker
 | `put`  | `/promotions/:id/:workerId/update` | TipWorkerComponent | customer only | add/ update tip, rate to worker redirect to updated /promotions/:id 
 | `get`  | `/promotions/:id/:promoId` | GetPromotionDetailsComponent | customer only | show promotion details and if avaliable QR code
-| `post`  | `/promotions/:id/:promoId/add` | GetPromotionDetailsComponent | customer only | gt the promotion push user to promoID and redirect to updated /promotions/:id
+| `put`  | `/promotions/:id/:promoId/update` | GetPromotionDetailsComponent | customer only | gt the promotion push user to promoID and redirect to updated /promotions/:id
 | `get` | `**` | NotFoundComponent | public | 
 
 ## Components
@@ -242,8 +242,6 @@ Promotion model
   qrCode - String
 
 ```
-
-
 ## API Endpoints (backend routes)
 
 - GET /auth/me

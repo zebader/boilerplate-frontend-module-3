@@ -17,6 +17,7 @@ export const withAuth = Comp => {
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
+                isBusinessAccount={authStore.isBusinessAccount}
                 {...this.props}
               />
             );
@@ -30,6 +31,7 @@ export const withAuth = Comp => {
 class AuthProvider extends Component {
   state = {
     isLoggedin: false,
+    isBusinessAccount: false,
     user: null,
     isLoading: true
   };
@@ -38,11 +40,20 @@ class AuthProvider extends Component {
     auth
       .me()
       .then(user => {
-        this.setState({
-          isLoggedin: true,
+        if(user.userType === 'business') {
+          this.setState({
+            isLoggedin: true,
           user,
-          isLoading: false
-        });
+          isLoading: false,
+          isBusinessAccount: true,
+          })
+        } else {
+          this.setState({
+            isLoggedin: true,
+            user,
+            isLoading: false
+          });
+        }
       })
       .catch(() => {
         this.setState({
@@ -54,14 +65,22 @@ class AuthProvider extends Component {
   }
 
   signup = user => {
-    const { username, password } = user;
+    const { username, password, email, location, userType } = user;
     auth
-      .signup({ username, password })
+      .signup({ username, password, email, location, userType })
       .then(user => {
-        this.setState({
-          isLoggedin: true,
-          user
-        });
+        if(user.userType === 'business') {
+          this.setState({
+            isLoggedin: true,
+            user,
+            isBusinessAccount: true,
+          });
+        } else {
+          this.setState({
+            isLoggedin: true,
+            user
+          });
+        }
       })
       .catch(({ response: { data: error } }) => {
         this.setState({
@@ -71,14 +90,23 @@ class AuthProvider extends Component {
   };
 
   login = user => {
-    const { username, password } = user;
+    const { username, password, userType } = user;
+    console.log(userType)
     auth
-      .login({ username, password })
+      .login({ username, userType, password })
       .then(user => {
-        this.setState({
-          isLoggedin: true,
-          user
-        });
+        if(user.userType === 'business') {
+          this.setState({
+            isLoggedin: true,
+            user,
+            isBusinessAccount: true,
+          });
+        } else {
+          this.setState({
+            isLoggedin: true,
+            user
+          });
+        }
       })
       .catch(() => {});
   };
@@ -89,19 +117,21 @@ class AuthProvider extends Component {
       .then(() => {
         this.setState({
           isLoggedin: false,
-          user: null
+          user: null,
+          isBusinessAccount: false,
         });
       })
       .catch(() => {});
   };
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, isBusinessAccount } = this.state;
     return isLoading ? (
       <div>Loading</div>
     ) : (
       <Provider
         value={{
           isLoggedin,
+          isBusinessAccount,
           user,
           login: this.login,
           logout: this.logout,

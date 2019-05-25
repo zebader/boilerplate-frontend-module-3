@@ -2,22 +2,21 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 
-function AnonRoute({ component: Component, isLoggedin, isBusinessAccount, ...rest }) {
+function PrivateRoute({ component: Component, isLoggedin,isBusinessAccount, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props => {
-        if(!isLoggedin) {
-          return (<Component {...props}/>)
+      render={props =>
+      {  if(!isLoggedin) {
+          return (<Redirect to="/login"/>)
         } else if (isLoggedin && isBusinessAccount) {
-          return (<Redirect to="/business"/>)
+          return (<Component {...props} />)
         } else {
           return (<Redirect to="/customer"/>)
         }
-      }
-      }
+      }}
     />
   );
 }
 
-export default withAuth(AnonRoute);
+export default withAuth(PrivateRoute);

@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { Switch } from "react-router-dom";
+import './css/main.css'
 
 import Navbar from "./components/Navbar";
-import Private from "./pages/Private";
+import Business from "./pages/Business";
+import Customer from "./pages/Customer";
+import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateBusinessRoute from "./components/PrivateBusinessRoute";
+import PrivateCustomerRoute from "./components/PrivateCustomerRoute";
+
 import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/AuthProvider";
 
@@ -15,12 +20,13 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Basic React Authentication</h1>
-          <Navbar />
+          {/* <Navbar /> */}
           <Switch>
-            <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
+            <AnonRoute path="/" component={Home} exact/>
+            <AnonRoute path="/signup" component={Signup} exact/>
+            <AnonRoute path="/login" component={Login} exact/>
+            <PrivateBusinessRoute path="/business" component={Business} exact/>
+            <PrivateCustomerRoute path="/customer" component={Customer} exact/>
           </Switch>
         </div>
       </AuthProvider>

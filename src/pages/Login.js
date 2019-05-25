@@ -4,13 +4,15 @@ import { withAuth } from "../lib/AuthProvider";
 class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    "userType": "customer",
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
-    this.props.login({ username, password });
+    const { username, password, userType } = this.state;
+    console.log(userType)
+    this.props.login({ username, password, userType });
   };
 
   handleChange = event => {
@@ -22,7 +24,24 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
+          <label>I am a Business</label>
+          <input
+            type="radio"
+            name="userType"
+            placeholder="business"
+            value="business"
+            onChange={this.handleChange}
+          />
+          <label>I am a Customer</label>
+          <input
+            type="radio"
+            name="userType"
+            placeholder="customer"
+            value="customer"
+            onChange={this.handleChange}
+          /> 
+
+          { this.state.userType === "business" ? <label>Business name:</label> : <label>Customer name:</label> }
         <input
           type="text"
           name="username"
