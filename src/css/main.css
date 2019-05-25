@@ -48,14 +48,26 @@ li, input{
 }
 
 /*MAIN ==========================================================*/
-
-h1{font-size: 3em;}
-
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900&display=swap');
 .container{
+  font-family: 'Poppins', sans-serif;
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
 }
+a,a:hover,a:active,a:visited{
+  text-decoration: none;
+  color:black;
+}
+
+h1{font-size: 3em;margin: 2%;}
+h2{font-size: 2em;margin: 2%;}
+h3{font-size: 1.2em;margin: 2%;}
+h4{font-size: 1em;margin: 2%;}
+h5{font-size: 0.9em;margin: 2%;}
+p{font-size: 0.8em;margin: 2%;}
+
+
 
 /*SPLASH ==========================================================*/
 

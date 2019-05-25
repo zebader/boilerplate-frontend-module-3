@@ -1,0 +1,26 @@
+.worker-card{
+  width: 100%;
+}
+.worker-card-wrapper{
+  width: 100%;
+  padding: 5% 0px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+.worker-card-img{
+  width: 30%;
+  margin: 3% 7%;
+}
+.worker-card-img img{
+  width: 100%;
+}
+.worker-card-info{
+  width:70%;
+}
