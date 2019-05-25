@@ -9,6 +9,7 @@ class Business extends Component {
   state = {
     business: this.props.user
   };
+
   render() {
 
     return (
@@ -18,7 +19,6 @@ class Business extends Component {
         {
           <BusinessCard {...this.state.business}/>
         }
-
         {
           this.state.business.workers.map((worker,index) =>
             <Link to={`/business/workers/${worker._id}`} key={worker._id} className="worker-card-link">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './../css/business-card.css';
+import axios from 'axios';
 
 export default class BusinessCard extends Component {
 
@@ -14,9 +15,20 @@ export default class BusinessCard extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, location, userType } = this.state;
-    console.log(userType)
-    this.props.login({ username, location, userType });
+    const { username, location } = this.state;
+
+    console.log("Ha hecho submit")
+    
+    axios.put(
+      `http://localhost:5000/business/update`,
+      { username, location }
+    )
+    .then( () => {
+      /* this.props.getTheProject();	 */					//  <---  hmmm
+      this.props.history.push('/business');    
+      // after submitting the form, redirect to '/projects'
+    })
+     .catch( (err) => console.log(err) )
   };
 
   handleChange = event => {
@@ -26,6 +38,28 @@ export default class BusinessCard extends Component {
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal });
   }
+
+/*   componentDidMount() {
+    this.getBusiness();  
+  }
+
+  getBusiness = () => {
+    this.business.get(`/business`)
+    .then((apiResponse) => {
+      console.log(apiResponse.data)
+      this.setState({ business: apiResponse.data })
+    })
+  }
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const businessId = this.props._id
+
+    const { username, location } = this.state;
+    const { _id } = this.props.theProject;
+  
+  }
+  }; */
 
   render() {
     return (
@@ -56,7 +90,7 @@ export default class BusinessCard extends Component {
             value={this.state.location}
             onChange={this.handleChange}
           />
-          <input type="submit" value="Business update" />
+          <input type="submit" value="BusinessUpdate" />
         </form>
         :
         null

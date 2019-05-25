@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 
-function PrivateRoute({ component: Component, isLoggedin,isBusinessAccount, ...rest }) {
+function PrivateCustomerRoute({ component: Component, isLoggedin,isBusinessAccount, ...rest }) {
   return (
     <Route
       {...rest}
@@ -19,4 +19,4 @@ function PrivateRoute({ component: Component, isLoggedin,isBusinessAccount, ...r
   );
 }
 
-export default withAuth(PrivateRoute);
+export default withAuth(PrivateCustomerRoute);

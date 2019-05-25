@@ -42,7 +42,7 @@ class AuthProvider extends Component {
       .then(user => {
         if(user.userType === 'business') {
           this.setState({
-            isLoggedin: true,
+          isLoggedin: true,
           user,
           isLoading: false,
           isBusinessAccount: true,

@@ -4,6 +4,7 @@ import './css/main.css'
 
 import Navbar from "./components/Navbar";
 import Business from "./pages/Business/Business";
+import BusinessWorker from "./pages/Business/components/BusinessWorker";
 import Customer from "./pages/Customer";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -26,7 +27,7 @@ class App extends Component {
             <AnonRoute path="/signup" component={Signup} exact/>
             <AnonRoute path="/login" component={Login} exact/>
             <PrivateBusinessRoute path="/business" component={Business} exact/>
-            <PrivateBusinessRoute path="/business/workers/:id" component={Business} exact/>
+            <PrivateBusinessRoute path="/business/workers/:id" component={BusinessWorker} exact/>
             <PrivateCustomerRoute path="/customer" component={Customer} exact/>
           </Switch>
         </div>
