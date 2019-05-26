@@ -30,7 +30,7 @@ class Customer extends Component {
 
   render() {
     const customer = this.state;
-
+    console.log(customer)
     return (
       <main>
       <BottomNavBar {...customer}/>
@@ -50,8 +50,8 @@ class Customer extends Component {
          { this.state.pinnedbusiness ?
                   
           customer.pinnedbusiness.map((business) =>
-          <ReactCSSTransitionGroup key={business._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/promotion/${business._id}`}  className="worker-card-link">
+          <ReactCSSTransitionGroup key={business.business._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
+            <Link to={`/promotions/${business.business._id}`}  className="worker-card-link">
               <PromotionCard {...business}/>
             </Link>
           </ReactCSSTransitionGroup>

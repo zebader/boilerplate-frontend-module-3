@@ -10,6 +10,7 @@ import BusinessPromotionsAdd from "./pages/Business/components/BusinessPromotion
 import BusinessPromotion from "./pages/Business/components/BusinessPromotion";
 import Customer from "./pages/Customer/Customer";
 import Promotions from "./pages/Promotions/Promotions";
+import PromotionsProfile from "./pages/Promotions/components/PromotionsProfile";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -37,6 +38,7 @@ class App extends Component {
             <PrivateBusinessRoute path="/business/promotions/:id" component={BusinessPromotion} exact/>
             <PrivateCustomerRoute path="/customer" component={Customer} exact/>
             <PrivateCustomerRoute path="/promotions" component={Promotions} exact/>
+            <PrivateCustomerRoute path="/promotions/:id" component={PromotionsProfile} exact/>
           </Switch>
         </div>
       </AuthProvider>
