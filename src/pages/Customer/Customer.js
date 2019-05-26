@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../../lib/AuthProvider";
 import { Link } from "react-router-dom";
+import BottomNavBar from '../../components/BottomNavBar'
 import CustomerCard from './components/CustomerCard'
 import PromotionCard from './components/PromotionCard'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
@@ -23,7 +24,6 @@ class Customer extends Component {
     .then((customer) => {
       const selectedCustomer = customer;
       this.setState({...selectedCustomer});
-      console.log(this.state.pinnedbusiness)
 
     }).catch((err) => console.log(err));  
   }
@@ -32,17 +32,18 @@ class Customer extends Component {
     const customer = this.state;
 
     return (
-      <main className="customer-page">
-
+      <main>
+      <BottomNavBar {...customer}/>
+      <section className="customer-page">
         {
           <CustomerCard {...customer}/>
         }
         {
           <div className="customer-page-togglebuttons">
-          <div className="customer-page-buttonworkers">
-            <h4> Your tipped places: </h4>
-            { this.state.toggleWorker ? <div className="selected-button"> </div> : <div className="selected-button"> </div>}
-          </div>
+            <div className="customer-page-buttonworkers">
+              <h4> Your tipped places: </h4>
+              { this.state.toggleWorker ? <div className="selected-button"> </div> : <div className="selected-button"> </div>}
+            </div>
           </div>
         }
 
@@ -58,8 +59,8 @@ class Customer extends Component {
           :
           <h3>You haven´t tipped yet</h3>
         }
-        
-
+ 
+      </section>
       </main>
     );
   }
