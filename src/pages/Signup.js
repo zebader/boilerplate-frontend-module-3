@@ -26,31 +26,47 @@ class Signup extends Component {
   render() {
     const { username, password, email, location } = this.state;
     return (
-      <div>
+      <section className="signup-wrapper">
         <form onSubmit={this.handleFormSubmit}>
-        <label>I am a Business</label>
-        <input
-            type="radio"
-            name="userType"
-            placeholder="business"
-            value="business"
-            onChange={this.handleChange}
-          />
-          <label>I am a Customer</label>
-          <input
-            type="radio"
-            name="userType"
-            placeholder="customer"
-            value="customer"
-            onChange={this.handleChange}
-          /> 
+          <h1>SIGN UP</h1>
+          <h4>Choose your type of user</h4>
+          <div className="radio-wrapper">
 
+            <label className="radio-checked">
+            <input
+              type="radio"
+              name="userType"
+              placeholder="customer"
+              value="customer"
+              onChange={this.handleChange}
+            />
+            <span className="checkmark-customer">
+              <img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt=""/>
+              <h4>I am a Customer</h4>
+            </span>
+            </label>
+            <label className="radio-checked">
+            <input
+              type="radio"
+              name="userType"
+              placeholder="business"
+              value="business"
+              onChange={this.handleChange}
+            />
+            <span className="checkmark-business">
+              <img src="http://chittagongit.com/download/252559" alt=""/>
+              <h4>I am a Business</h4>
+            </span>
+            </label>
+          </div>
+          { this.state.userType === "business" ? <h4 style={{color:"red"}}>Add workers and create promotions</h4> :<h4 style={{color:"orange"}}>Tip workers and get promotions!</h4> }
           { this.state.userType === "business" ? <label>Business name:</label> : <label>Customer name:</label> }
           <input
             type="text"
             name="username"
             value={username}
             onChange={this.handleChange}
+            required
           />
           <label>Email:</label>
           <input
@@ -58,6 +74,7 @@ class Signup extends Component {
             name="email"
             value={email}
             onChange={this.handleChange}
+            required
           />
           <label>Location:</label>
           <input
@@ -65,6 +82,7 @@ class Signup extends Component {
             name="location"
             value={location}
             onChange={this.handleChange}
+            required
           />
           <label>Password:</label>
           <input
@@ -74,13 +92,14 @@ class Signup extends Component {
             
             onChange={this.handleChange}
             required/>
-          <input type="submit" value="Signup" />
+            { this.state.userType === "business" ? <input type="submit" value="SIGN UP" className="form-button-business" />: <input type="submit" value="SIGN UP" className="form-button-customer" />}
+          
         </form>
-        <p>
+        <p className="login-link-text-color">
           Already have account?
           <Link to={"/login"}> Login</Link>
         </p>
-      </div>
+      </section>
     );
   }
 }

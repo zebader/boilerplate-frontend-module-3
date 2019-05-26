@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './../css/customer-card.css';
-import customerService from './../../../lib/customer-service';
+import customerService from '../../../lib/customer-service';
 
 
 export default class customerCard extends Component {

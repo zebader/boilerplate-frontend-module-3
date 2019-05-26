@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch } from "react-router-dom";
-import './css/main.css'
+
 
 import Navbar from "./components/Navbar";
 import Business from "./pages/Business/Business";
@@ -11,6 +11,7 @@ import BusinessPromotion from "./pages/Business/components/BusinessPromotion";
 import Customer from "./pages/Customer/Customer";
 import Promotions from "./pages/Promotions/Promotions";
 import PromotionsProfile from "./pages/Promotions/components/PromotionsProfile";
+import PromotionsWorkerProfile from "./pages/Promotions/components/PromotionsWorkerProfile";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -26,7 +27,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          {/* <Navbar /> */}
+          <Navbar />
           <Switch>
             <AnonRoute path="/" component={Home} exact/>
             <AnonRoute path="/signup" component={Signup} exact/>
@@ -39,6 +40,7 @@ class App extends Component {
             <PrivateCustomerRoute path="/customer" component={Customer} exact/>
             <PrivateCustomerRoute path="/promotions" component={Promotions} exact/>
             <PrivateCustomerRoute path="/promotions/:id" component={PromotionsProfile} exact/>
+            <PrivateCustomerRoute path="/promotions/:id/workers/:workerId" component={PromotionsWorkerProfile} exact/>
           </Switch>
         </div>
       </AuthProvider>

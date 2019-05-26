@@ -28,12 +28,12 @@ export default class PromotionsProfile extends Component {
     })
     .catch((err) => console.log(err));
 
-    customerService.getCustomer()
+/*     customerService.getCustomer()
     .then((customer) => {
 
       this.setState({customer});
 
-    }).catch((err) => console.log(err));  
+    }).catch((err) => console.log(err));  */ 
   }
   
   render() {
@@ -44,8 +44,6 @@ export default class PromotionsProfile extends Component {
       <section>
       <BottomNavBar />
       <article className="promotions-profile">
-
-      
 
         <div className="promotions-profile-wrapper">
           <div className="promotions-profile-img">
@@ -77,11 +75,12 @@ export default class PromotionsProfile extends Component {
           
           business.workers.map((worker) =>
           <ReactCSSTransitionGroup key={worker._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/business/workers/${worker._id}`}  className="promotion-worker-card-link">
+            <Link to={`/promotions/${business._id}/workers/${worker._id}/`}  className="promotion-worker-card-link">
               <PromotionsWorkerCard {...worker}/>
             </Link>
           </ReactCSSTransitionGroup>
           )
+
           }
 
       </article>
