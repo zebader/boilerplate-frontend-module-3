@@ -4,7 +4,10 @@ import './css/main.css'
 
 import Navbar from "./components/Navbar";
 import Business from "./pages/Business/Business";
+import BusinessWorkerAdd from "./pages/Business/components/BusinessWorkerAdd";
 import BusinessWorker from "./pages/Business/components/BusinessWorker";
+import BusinessPromotionsAdd from "./pages/Business/components/BusinessPromotionAdd";
+import BusinessPromotion from "./pages/Business/components/BusinessPromotion";
 import Customer from "./pages/Customer";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -28,6 +31,9 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} exact/>
             <PrivateBusinessRoute path="/business" component={Business} exact/>
             <PrivateBusinessRoute path="/business/workers/:id" component={BusinessWorker} exact/>
+            <PrivateBusinessRoute path="/business/workers-add" component={BusinessWorkerAdd} exact/>
+            <PrivateBusinessRoute path="/business/promotions-add" component={BusinessPromotionsAdd} exact/>
+            <PrivateBusinessRoute path="/business/promotions/:id" component={BusinessPromotion} exact/>
             <PrivateCustomerRoute path="/customer" component={Customer} exact/>
           </Switch>
         </div>

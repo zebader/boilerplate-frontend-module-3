@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import businessService from './../../../lib/business-service';
 
-export default class BusinessWorker extends Component {
+export default class BusinessPromotion extends Component {
 
   constructor(props){
     super(props);
@@ -9,27 +9,25 @@ export default class BusinessWorker extends Component {
       imgUrl:"",
       name : "",
       type: "",
-      rating: 0,
-      tips: 0,
+      pointsToUnlock: 0,
       };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { id } = this.props.match.params;
-    const { name,type } = this.state;
-    console.log("Ha hecho submit")
+    const { name,type,pointsToUnlock } = this.state;
 
-    businessService.updateWorker({ name,type },id)
+    businessService.updatePromotion({ name,type,pointsToUnlock },id)
     .then(() => {
       this.props.history.push('/business');
     })
     .catch((err) => console.log(err)); 
   }
 
-  deleteWorker = () => {
+  deletePromotion = () => {
     const { id } = this.props.match.params;
-    businessService.deleteWorker(id)
+    businessService.deletePromotion(id)
     	.then(() => {
         this.props.history.push('/business')
       })
@@ -42,11 +40,11 @@ export default class BusinessWorker extends Component {
   };
 
   componentDidMount() {
-
-    businessService.getAWorker(this.props.match.params.id)
-    .then((worker) => {
-      const selectedWorker = worker;
-      this.setState({...selectedWorker});
+ 
+    businessService.getAPromotion(this.props.match.params.id)
+    .then((promotion) => {
+      const selectedPromotion = promotion;
+      this.setState({...selectedPromotion});
     })
     .catch((err) => console.log(err));
 
@@ -62,37 +60,40 @@ export default class BusinessWorker extends Component {
           <div className="worker-profile-info">
             <h4>{this.state.name}</h4>
             <h5>{this.state.type}</h5>
-            <p>{this.state.rating}</p>
-            <p>{this.state.tips}</p>
-            <button onClick={() => this.deleteWorker()}>
-            DELETE WORKER
+            <p>{this.state.pointsToUnlock}</p>
+            <button onClick={() => this.deletePromotion()}>
+            DELETE PROMOTION
             </button>
           </div>
         </div>
 
         <form onSubmit={this.handleFormSubmit}>
-          <label>Your worker name:</label>
+          <label>Promotion name:</label>
           <input
             type="text"
             name="name"
             value={this.state.name}
             onChange={this.handleChange}
           />
-          <label>Your worker position:</label>
+          <label>Kind of promotion:</label>
           <input
             type="text"
             name="type"
             value={this.state.type}
             onChange={this.handleChange}
           />
-          <input type="submit" value="UPDATE WORKER" />
+          <label>Point to unlock promotion:</label>
+          <input
+            type="number"
+            name="pointsToUnlock"
+            value={this.state.pointsToUnlock}
+            onChange={this.handleChange}
+          />
+
+          <input type="submit" value="UPDATE PROMOTION" />
         </form>
 
-
       </article>
-
-
-
     )
   }
 }

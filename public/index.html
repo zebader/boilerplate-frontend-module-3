@@ -20,6 +20,18 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <style>
+    .anim-appear {
+    position:relative;
+    left:-100%;
+    }
+    
+    .anim-appear.anim-appear-active{
+      position:relative;
+      left: 0%;
+      transition: all 0.5s ease-in;
+    }
+    </style>
   </head>
   <body>
     <noscript>

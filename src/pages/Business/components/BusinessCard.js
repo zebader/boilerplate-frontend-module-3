@@ -1,34 +1,30 @@
 import React, { Component } from 'react'
 import './../css/business-card.css';
-import axios from 'axios';
+import businessService from './../../../lib/business-service';
+
 
 export default class BusinessCard extends Component {
-
-  state = {
-    username: this.props.username,
-    imgUrl: this.props.imgUrl,
-    location: this.props.location,
-    numbeOfWorkers: this.props.workers.length,
-    numbeOfPromotions: this.props.promotions.length,
-    showModal: false,
+  constructor(props){
+    super(props);
+    this.state = {
+      username: "",
+      imgUrl: "",
+      location: "",
+      numberOfWorkers: 0,
+      numberOfPromotions: 0,
+      showModal: false,
+      }
   };
 
   handleFormSubmit = event => {
-    event.preventDefault();
+    event.preventDefault();    
     const { username, location } = this.state;
 
-    console.log("Ha hecho submit")
-    
-    axios.put(
-      `http://localhost:5000/business/update`,
-      { username, location }
-    )
-    .then( () => {
-      /* this.props.getTheProject();	 */					//  <---  hmmm
-      this.props.history.push('/business');    
-      // after submitting the form, redirect to '/projects'
+    businessService.updateBusiness({ username, location })
+    .then(() => {
     })
-     .catch( (err) => console.log(err) )
+    .catch((err) => console.log(err)); 
+
   };
 
   handleChange = event => {
@@ -39,27 +35,15 @@ export default class BusinessCard extends Component {
     this.setState({ showModal: !this.state.showModal });
   }
 
-/*   componentDidMount() {
-    this.getBusiness();  
-  }
+  componentDidMount() {
 
-  getBusiness = () => {
-    this.business.get(`/business`)
-    .then((apiResponse) => {
-      console.log(apiResponse.data)
-      this.setState({ business: apiResponse.data })
-    })
-  }
+    businessService.getBusiness()
+    .then((business) => {
+      const selectedBusiness = business;
+      this.setState({numberOfWorkers : selectedBusiness.workers.length,numberOfPromotions : selectedBusiness.promotions.length,...selectedBusiness});
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    const businessId = this.props._id
-
-    const { username, location } = this.state;
-    const { _id } = this.props.theProject;
-  
+    }).catch((err) => console.log(err));  
   }
-  }; */
 
   render() {
     return (
@@ -69,8 +53,8 @@ export default class BusinessCard extends Component {
           <img src={this.props.imgUrl} alt={this.props.name}/>
           <h3>{this.state.username}</h3>
           <h4>{this.state.location}</h4>
-          <p>workers: {this.state.numbeOfWorkers}</p>
-          <p>promotions: {this.state.numbeOfPromotions}</p>
+          <p>workers: {this.state.numberOfWorkers}</p>
+          <p>promotions: {this.state.numberOfPromotions}</p>
         </div>
 
         {

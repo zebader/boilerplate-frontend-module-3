@@ -1,6 +1,56 @@
 .business-page{
   background-color: #f9f7f7;
-  padding: 3%;
+  padding: 3% 3% 20% 3%;
+}
+
+.business-page-togglebuttons{
+  width: 100%;
+  margin:0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.business-page-togglebuttons div{
+  width: 50%;
+  padding: 5%;
+  margin: 2% 0;
+  text-align: center;
+}
+
+div.selected-button{
+  width: 100%;
+  padding: 2px 0;
+  background: red;
+  margin-top: 20px;
+  transition: all 200ms;
+}
+div.noselected-button{
+  width: 100%;
+  padding: 2px 0;
+  margin-top: 20px;
+  transition: all 200ms;
+}
+.worker-add-button,.promotion-add-button{
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  margin: 5% 0;
+  left: 50%;
+  width: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  padding: 5%;
+  border: none;
+  color: white;
+  border-radius: 80px;
+  background: rgba(248,80,50,1);
+  background: -moz-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 32%, rgba(240,47,23,1) 84%, rgba(231,56,39,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(248,80,50,1)), color-stop(32%, rgba(241,111,92,1)), color-stop(84%, rgba(240,47,23,1)), color-stop(100%, rgba(231,56,39,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 32%, rgba(240,47,23,1) 84%, rgba(231,56,39,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 32%, rgba(240,47,23,1) 84%, rgba(231,56,39,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 32%, rgba(240,47,23,1) 84%, rgba(231,56,39,1) 100%);
+  background: linear-gradient(135deg, rgba(248,80,50,1) 0%, rgba(241,111,92,1) 32%, rgba(240,47,23,1) 84%, rgba(231,56,39,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
 }
 .worker-card-link{
   display: block;
