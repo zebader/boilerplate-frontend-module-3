@@ -1,17 +1,34 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
-    "userType": "customer",
+    "userType": "",
   };
+
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-black");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
+  bodyBgBusiness = () => {
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-business");
+    body.classList.remove("signup-bg-color-customer");
+  }
+  bodyBgCustomer = () => {
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { username, password, userType } = this.state;
-    console.log(userType)
     this.props.login({ username, password, userType });
   };
 
@@ -19,27 +36,48 @@ class Login extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
+componentDidMount(){
+  this.bodyBgDefault();
+}
   render() {
     const { username, password } = this.state;
     return (
+      <section className="signup-wrapper">
       <form onSubmit={this.handleFormSubmit}>
-          <label>I am a Business</label>
-          <input
-            type="radio"
-            name="userType"
-            placeholder="business"
-            value="business"
-            onChange={this.handleChange}
-          />
-          <label>I am a Customer</label>
-          <input
-            type="radio"
-            name="userType"
-            placeholder="customer"
-            value="customer"
-            onChange={this.handleChange}
-          /> 
+          <h1>Log in</h1>
+          <h4>Choose your type of user</h4>
+          <div className="radio-wrapper">
+
+            <label className="radio-checked">
+            <input
+              type="radio"
+              name="userType"
+              placeholder="customer"
+              value="customer"
+              onChange={this.handleChange}
+            />
+            <span className="checkmark-customer" onClick={this.bodyBgCustomer}>
+              <img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt=""/>
+              <h4>I am a Customer</h4>
+            </span>
+            </label>
+            <label className="radio-checked">
+            <input
+              type="radio"
+              name="userType"
+              placeholder="business"
+              value="business"
+              onChange={this.handleChange}
+            />
+            <span className="checkmark-business" onClick={this.bodyBgBusiness}>
+              <img src="http://chittagongit.com/download/252559" alt=""/>
+              <h4>I am a Business</h4>
+            </span>
+            </label>
+          </div>
+          {
+            this.state.userType !== "" ?
+            <div>
 
           { this.state.userType === "business" ? <label>Business name:</label> : <label>Customer name:</label> }
         <input
@@ -55,8 +93,17 @@ class Login extends Component {
           value={password}
           onChange={this.handleChange}
         />
-        <input type="submit" value="Login" />
+        { this.state.userType === "business" ? <input type="submit" value="LOG IN" className="form-button-business" />: <input type="submit" value="LOG IN" className="form-button-customer" />}
+        </div>
+        :
+          null
+        }
       </form>
+      <p className="login-link-text-color">
+          Don't have an account?
+          <Link to={"/signup"}>Sign up</Link>
+      </p>
+      </section>
     );
   }
 }

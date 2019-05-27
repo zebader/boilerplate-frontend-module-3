@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import auth from "../lib/auth-service";
-import './../js/signup-special'
+
 
 class Signup extends Component {
   state = {
@@ -10,8 +9,14 @@ class Signup extends Component {
     "password": "",
     "email": "", 
     "location": "",
-    "userType": "customer",
+    "userType": "",
   };
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-black");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
 
   bodyBgBusiness = () => {
     const body = document.querySelector("body");
@@ -36,15 +41,16 @@ class Signup extends Component {
   };
 
   componentDidMount(){
+    this.bodyBgDefault();
   }
 
   render() {
-
     const { username, password, email, location } = this.state;
+
     return (
       <section className="signup-wrapper">
         <form onSubmit={this.handleFormSubmit}>
-          <h1>SIGN UP</h1>
+          <h1>Sign up</h1>
           <h4>Choose your type of user</h4>
           <div className="radio-wrapper">
 
@@ -76,10 +82,12 @@ class Signup extends Component {
             </label>
           </div>
 
-          
-          { this.state.userType === "business" ? <h4 style={{color:"red"}}>Add workers and create promotions</h4> :<h4 style={{color:"orange"}}>Tip workers and get promotions!</h4> }
+          {
+            this.state.userType !== "" ?
+            <div>
+          { this.state.userType === "business" ? <h4 style={{color:"#ff2f2f"}}>Add workers and create promotions</h4> :<h4 style={{color:"#ff9d2f"}}>Tip workers and get promotions!</h4> }
           { this.state.userType === "business" ? <label>Business name:</label> : <label>Customer name:</label> }
-          
+
           <input
             type="text"
             name="username"
@@ -113,10 +121,14 @@ class Signup extends Component {
             required/>
             { this.state.userType === "business" ? <input type="submit" value="SIGN UP" className="form-button-business" />: <input type="submit" value="SIGN UP" className="form-button-customer" />}
           
+          </div>
+          :
+          null
+          }
         </form>
         <p className="login-link-text-color">
           Already have account?
-          <Link to={"/login"}> Login</Link>
+          <Link to={"/login"}>Login</Link>
         </p>
       </section>
     );

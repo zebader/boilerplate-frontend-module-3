@@ -63,6 +63,7 @@ select:-webkit-autofill:focus {
 
 /*MAIN ==========================================================*/
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=K2D:400,700i&display=swap');
 
 .container{
   font-family: 'Poppins', sans-serif;
@@ -70,12 +71,13 @@ select:-webkit-autofill:focus {
   max-width: 900px;
   margin: 0 auto;
   height: 100vh;
+  color:#0e002f;
 }
 a,a:hover,a:active,a:visited{
   text-decoration: none;
 }
 
-h1{font-size: 2.5em;margin: 2%;}
+h1{font-size: 2.5em;margin: 2%; font-family: 'K2D', sans-serif; font-weight: 700;font-style: italic;}
 h2{font-size: 2em;margin: 2%;}
 h3{font-size: 1.2em;margin: 2%;}
 h4{font-size: 1em;margin: 2%;}
@@ -89,7 +91,7 @@ form{
   width: 80%;
   padding: 3% 5% 13% 5%;
   margin: 0 auto;
-  border: 1px solid #eee;
+  border: 5px solid #eee;
   border-radius:20px;
   background: white;
   -webkit-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
@@ -97,6 +99,8 @@ form{
   box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   transition: all 300ms;
   position: relative;
+  z-index: 2;
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);
 }
 
 input[type="text"],input[type="number"],input[type="password"],input[type="email"]{
@@ -118,14 +122,18 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background: rgba(20,15,0,1);
-  background: -moz-linear-gradient(top, rgba(20,15,0,1) 0%, rgba(245,12,98,1) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(20,15,0,1)), color-stop(100%, rgba(245,12,98,1)));
-  background: -webkit-linear-gradient(top, rgba(20,15,0,1) 0%, rgba(245,12,98,1) 100%);
-  background: -o-linear-gradient(top, rgba(20,15,0,1) 0%, rgba(245,12,98,1) 100%);
-  background: -ms-linear-gradient(top, rgba(20,15,0,1) 0%, rgba(245,12,98,1) 100%);
-  background: linear-gradient(to bottom, rgba(20,15,0,1) 0%, rgba(245,12,98,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#140f00', endColorstr='#f50c62', GradientType=0 );
+  background: linear-gradient(-45deg, #ff9d2f, #5c0037, #0e002f, #402482);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+.home-splash-title{
+  width:100%;
+}
+
+.home-splash-title img{
+  width:80%;
 }
 
 .home-splash-wrapper > div{
@@ -135,7 +143,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  text-align: center;
 }
 .home-splash-description img{
   width:80%;
@@ -143,15 +150,53 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
 
 .home-splash-buttons a{
   width: 100%;
+  position: relative;
 }
+.home-button-signup{
+  color: white;
+  font-family: 'K2D', sans-serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  font-style: italic;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  height: 80px;
+  width: 80%;
+  border-radius: 50px;
+  border: none;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+}
+
+/*animations======================================*/
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 
 /*SIGN UP ==========================================================*/
 
+.signup-bg-color-black{
+  background-image: linear-gradient(#402482, #0e002f);
+  background-attachment: fixed;
+}
 .signup-bg-color-business{
-  background: red;
+  background-image: linear-gradient(#e20088,#ff2f2f);
+  background-attachment: fixed;
 }
 .signup-bg-color-customer{
-  background: orange;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  background-attachment: fixed;
 }
 
 .signup-wrapper{
@@ -159,6 +204,7 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin: 5% 0 0 0;
 }
 
 .signup-wrapper img {
@@ -173,6 +219,7 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   align-items: center;
   flex-wrap: nowrap;
   text-align: center;
+  
 }
 
 .radio-checked{
@@ -192,41 +239,37 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
 }
 
 .radio-checked input:checked ~ .checkmark-business {
-  border:1px solid red;
+  border:5px solid #e20088;
   background:#ffe1e1;
   transform: scale(1.1) rotate(2deg);
+  box-shadow: inset 0px 0px 22px 0px rgb(255, 100, 38);
+  z-index: 3;
 }
 .radio-checked input:checked ~ .checkmark-customer {
-  border:1px solid orange;
+  border:5px solid #ff6126;
   background:#fff5e3;
   transform: scale(1.1) rotate(-2deg);
+  box-shadow: inset 0px 0px 22px 0px rgb(255, 100, 38);
+  z-index: 3;
   
 }
-
-.checkmark-business{
+.checkmark-customer, .checkmark-business{
   display: block;
   position: relative;
   padding: 15% 0;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 4px solid #eee;
   border-radius: 10px;
   margin: 20px 0;
   transition: all 500ms;
-
-}
-.checkmark-customer{
-  display: block;
-  position: relative;
-  padding: 15% 0;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin: 20px 0;
-  transition: all 500ms;
-  
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.5);
 }
 
 .form-button-business{
+  color:white;
+  font-family: 'K2D', sans-serif;
+  font-weight: 700;
+  font-style: italic;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -235,9 +278,13 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   width: 80%;
   border-radius:50px;
   border:none;
-  background: red;
+  background-image: linear-gradient(#e20088,#ff2f2f);
 }
 .form-button-customer{
+  color:white;
+  font-family: 'K2D', sans-serif;
+  font-weight: 700;
+  font-style: italic;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -246,11 +293,19 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   width: 80%;
   border-radius:50px;
   border:none;
-  background: orange;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
 }
 .login-link-text-color{
-  color:white;
+  color: white;
+  margin: 30px;
+  text-align: center;
+  width: 100%;
 }
 .login-link-text-color a{
-  color:#03a9f4;
+  color:#0e002f;
+  font-size: 1em;
+  background-color: white;
+  padding: 2% 5%;
+  border-radius:20px;
+  margin-left:10px;
 }
