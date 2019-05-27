@@ -15,47 +15,56 @@ class Customer extends Component {
     "imgUrl": "",
     "location": "",
     "balance": 0,
-    "pinnedbusiness": [],
+    "pinnedbusiness": null,
     "userType": "customer",
+    loading:true,
+    numberOfPromotions: 0,
   };
+  
+  updateBalance = (newBalance) =>{
+    this.setState({balance : newBalance})
+  }
 
   componentDidMount() {
+
     customerService.getCustomer()
     .then((customer) => {
+
       const selectedCustomer = customer;
-      this.setState({...selectedCustomer});
+      this.setState({...selectedCustomer, loading:false, numberOfPromotions:customer.pinnedbusiness.length});
 
     }).catch((err) => console.log(err));  
   }
 
   render() {
-    const customer = this.state;
-    console.log(customer)
+    
+    const  { pinnedbusiness , loading } = this.state;
     return (
       <main>
-      <BottomNavBar {...customer}/>
+      <BottomNavBar {...this.state} updateBalance={this.updateBalance}/>
       <section className="customer-page">
-        {
-          <CustomerCard {...customer}/>
+        { !loading ?
+          <CustomerCard {...this.state}/> : null
         }
         {
           <div className="customer-page-togglebuttons">
             <div className="customer-page-buttonworkers">
               <h4> Your tipped places: </h4>
-              { this.state.toggleWorker ? <div className="selected-button"> </div> : <div className="selected-button"> </div>}
+              <div className="selected-button"></div>
             </div>
           </div>
         }
 
-         { this.state.pinnedbusiness ?
+         { pinnedbusiness ?
                   
-          customer.pinnedbusiness.map((business) =>
-          <ReactCSSTransitionGroup key={business.business._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
+          pinnedbusiness.map((business) => {
+          return (<ReactCSSTransitionGroup key={business.business._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
             <Link to={`/promotions/${business.business._id}`}  className="worker-card-link">
               <PromotionCard {...business}/>
             </Link>
           </ReactCSSTransitionGroup>
-          )
+          )})
+          
           :
           <h3>You haven´t tipped yet</h3>
         }

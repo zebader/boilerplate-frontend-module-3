@@ -9,7 +9,7 @@ import './css/promotions-page.css';
 
 class Promotions extends Component {
   state = {
-    AllPromotions: [],
+    AllPromotions: null,
     "userType": "customer",
   };
 
@@ -24,7 +24,7 @@ class Promotions extends Component {
 
   render() {
    
-    const promotions = this.state;
+    const {AllPromotions} = this.state;
 
     return (
       <main>
@@ -42,9 +42,9 @@ class Promotions extends Component {
           </div>
         }
 
-         { this.state.AllPromotions ?
+         { AllPromotions ?
                   
-          promotions.AllPromotions.map((promotion) =>
+          AllPromotions.map((promotion) =>
 
           <ReactCSSTransitionGroup key={promotion._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
             <Link to={`/promotions/${promotion._id}`}  className="worker-card-link">

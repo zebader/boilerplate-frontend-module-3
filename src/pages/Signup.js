@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import auth from "../lib/auth-service";
+import './../js/signup-special'
 
 class Signup extends Component {
   state = {
@@ -11,6 +12,17 @@ class Signup extends Component {
     "location": "",
     "userType": "customer",
   };
+
+  bodyBgBusiness = () => {
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-business");
+    body.classList.remove("signup-bg-color-customer");
+  }
+  bodyBgCustomer = () => {
+    const body = document.querySelector("body");
+    body.classList.add("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -23,7 +35,11 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
+  componentDidMount(){
+  }
+
   render() {
+
     const { username, password, email, location } = this.state;
     return (
       <section className="signup-wrapper">
@@ -40,7 +56,7 @@ class Signup extends Component {
               value="customer"
               onChange={this.handleChange}
             />
-            <span className="checkmark-customer">
+            <span className="checkmark-customer" onClick={this.bodyBgCustomer}>
               <img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt=""/>
               <h4>I am a Customer</h4>
             </span>
@@ -53,14 +69,17 @@ class Signup extends Component {
               value="business"
               onChange={this.handleChange}
             />
-            <span className="checkmark-business">
+            <span className="checkmark-business" onClick={this.bodyBgBusiness}>
               <img src="http://chittagongit.com/download/252559" alt=""/>
               <h4>I am a Business</h4>
             </span>
             </label>
           </div>
+
+          
           { this.state.userType === "business" ? <h4 style={{color:"red"}}>Add workers and create promotions</h4> :<h4 style={{color:"orange"}}>Tip workers and get promotions!</h4> }
           { this.state.userType === "business" ? <label>Business name:</label> : <label>Customer name:</label> }
+          
           <input
             type="text"
             name="username"

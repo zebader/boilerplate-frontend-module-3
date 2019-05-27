@@ -69,15 +69,10 @@ select:-webkit-autofill:focus {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  background-color: rgba(20,15,0,1);
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 a,a:hover,a:active,a:visited{
   text-decoration: none;
-  color:black;
 }
 
 h1{font-size: 2.5em;margin: 2%;}
@@ -152,6 +147,13 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
 
 /*SIGN UP ==========================================================*/
 
+.signup-bg-color-business{
+  background: red;
+}
+.signup-bg-color-customer{
+  background: orange;
+}
+
 .signup-wrapper{
   display: flex;
   justify-content: center;
@@ -187,14 +189,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   opacity: 0;
   cursor: pointer;
   display: none;
-
-}
-
-.radio-checked:hover input ~ .checkmark-business {
-  border:1px solid #ccc;
-}
-.radio-checked:hover input ~ .checkmark-customer {
-  border:1px solid #ccc;
 }
 
 .radio-checked input:checked ~ .checkmark-business {

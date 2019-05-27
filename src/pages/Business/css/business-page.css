@@ -30,8 +30,11 @@ div.noselected-button{
   margin-top: 20px;
   transition: all 200ms;
 }
-.worker-add-button,.promotion-add-button{
+a.worker-add-button,a.promotion-add-button{
   position: fixed;
+  text-align:center;
+  color:white;
+  font-weight:400;
   z-index: 999;
   bottom: 0;
   margin: 5% 0;

@@ -5,23 +5,25 @@ import promotionsService from './../../../lib/promotions-service';
 export default class PromotionsWorkerProfile extends Component {
   constructor(props){
     super(props);
+
     this.state = {
       imgUrl:"",
       name : "",
       type: "",
       rating: 0,
       tips: 0,
-      id:this.props.match.params.workerId,
+      workerId:this.props.match.params.workerId,
+      id:this.props.match.params.id,
       };
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
+    const { workerId ,id } = this.state;
+    const { tips,rating } = this.state;
+    const points = tips*100;
 
-    const { tips,rating,id } = this.state;
-    console.log(this.state.id)
-
-    promotionsService.updateTipWorker({ tips,rating,id },this.props.match.params.id)
+    promotionsService.updateTipWorker({ tips,rating, points }, workerId ,id)
     .then(() => {
       this.props.history.goBack();
     })
@@ -35,9 +37,10 @@ export default class PromotionsWorkerProfile extends Component {
   };
 
   componentDidMount(){
-    const { rating,tips } = this.state;
 
-    promotionsService.getAPromotionsWorker({ rating,tips },this.props.match.params.id)
+    const { workerId,id } = this.state;
+
+    promotionsService.getAPromotionsWorker(workerId,id)
     .then((worker) => {
       const selectedWorker = worker;
       this.setState({...selectedWorker});
@@ -47,14 +50,13 @@ export default class PromotionsWorkerProfile extends Component {
   
   render() {
 
-    console.log(this.state)
     return (
       <article className="worker-profile">
 
 
         <form onSubmit={this.handleFormSubmit}>
 
-          <label>TIPS:(current tips: {this.state.tips})</label>
+          <label>TIP {this.state.name} !</label>
           <input
             type="number"
             name="tips"

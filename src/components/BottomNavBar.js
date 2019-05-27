@@ -7,7 +7,7 @@ class BottomNavbar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      balance:this.props.balance,
+      balance: 0,
       showModal: false,
       }
   };
@@ -17,10 +17,14 @@ class BottomNavbar extends Component {
   handleFormSubmit = event => {
         event.preventDefault();    
         const { balance } = this.state;
-    
-        customerService.updateWallet ({ balance })
-        .then(() => {
-          this.setState({ showModal: !this.state.showModal, balance });
+
+        customerService.updateWallet({balance})
+        .then((wallet) => {
+          const balanceFinal = wallet.customer.balance;
+
+          this.setState({ showModal: !this.state.showModal, balance:balanceFinal });
+
+          this.props.updateBalance(balanceFinal)
         })
         .catch((err) => console.log(err)); 
     
@@ -55,7 +59,7 @@ class BottomNavbar extends Component {
         null
         }
         <Link to={`/customer`}><button>Profile</button></Link>
-        <button onClick={this.toggleModal}>WALLET actual balance:{this.state.balance}</button>
+        <button onClick={this.toggleModal}>WALLET actual balance:{this.props.balance}</button>
         <Link to={`/promotions`}><button>Promos</button></Link>
       </div>
 

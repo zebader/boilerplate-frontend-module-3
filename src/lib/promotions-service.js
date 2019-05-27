@@ -23,28 +23,28 @@ class PromotionsService {
 
   // ======== TIP WORKER SERVICES ======================================================== //
 
-  getAPromotionsWorker(worker,id) {
+  getAPromotionsWorker(workerid,id) {
     return this.promotions
-      .get(`/promotions/${id}/workers/${worker.id}`)
+      .get(`/promotions/${id}/workers/${workerid}`)
       .then(({ data }) => data);
   }
-  updateTipWorker(worker,id){
+  updateTipWorker(worker,workerid,id){
     return this.promotions
-      .put(`/promotions/${id}/workers/${worker.id}/rate`, worker)
+      .put(`/promotions/${id}/workers/${workerid}/rate`, worker)
       .then(({ data }) => data);
   }
   
   // ======== PROMOTION SERVICES ============================================================= //
 
-  getAPromotionsPromo(promotion,id) {
+  getAPromotionsPromo(promotionid,id) {
     return this.promotions
-      .get(`/promotions/${id}/promotions/${promotion.id}`)
+      .get(`/promotions/${id}/promotions/${promotionid}`)
       .then(({ data }) => data);
   }
 
-  claimPromotion(worker,id){
+  claimPromotion(promotionid,id){
     return this.promotions
-      .put(`/promotions/${id}/workers/${worker.id}/rate`, worker)
+      .put(`/promotions/${id}/workers/${promotionid}/rate`)
       .then(({ data }) => data);
   }
 

@@ -44,12 +44,12 @@ class Business extends Component {
     return (
       <main className="business-page">
       { this.state.toggleWorker ?
-        <Link to={`/business/workers-add`} className="worker-card-link">
-          <button className="worker-add-button"> ADD WORKER </button>
+        <Link to={`/business/workers-add`} className="worker-add-button" >
+          ADD WORKER
         </Link>
       :
-        <Link to={`/business/promotions-add`}  className="worker-card-link">
-          <button className="promotion-add-button"> ADD PROMOTION </button>
+        <Link to={`/business/promotions-add`}  className="promotion-add-button">
+          ADD PROMOTION
         </Link>
       }
 

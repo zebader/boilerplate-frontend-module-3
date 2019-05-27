@@ -7,11 +7,6 @@ export default class customerCard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      "username": "",
-      "imgUrl": "",
-      "location": "",
-      "balance": 0,
-      numberOfPromotions: 0,
       showModal: false,
       }
   };
@@ -36,26 +31,17 @@ export default class customerCard extends Component {
     this.setState({ showModal: !this.state.showModal });
   }
 
-  componentDidMount() {
-
-    customerService.getCustomer ()
-    .then((customer ) => {
-      const selectedCustomer  = customer ;
-      this.setState({numberOfPromotions : selectedCustomer.pinnedbusiness.length,...selectedCustomer });
-
-    }).catch((err) => console.log(err));  
-  }
-
   render() {
+    const {username, imgUrl, location, balance, numberOfPromotions} = this.props;
     return (
       <div className="customer-card-page">
 
         <div className="customer-card" onClick={this.toggleModal}>
-          <img src={this.state.imgUrl} alt={this.state.name}/>
-          <h3>{this.state.username}</h3>
-          <h4>{this.state.location}</h4>
-          <p>your current balance is : {this.state.balance}</p>
-          <p>You have {this.state.numberOfPromotions} active promotions</p>
+          <img src={imgUrl} alt={username}/>
+          <h3>{username}</h3>
+          <h4>{location}</h4>
+          <p>your current balance is : {balance}</p>
+          <p>You have {this.props.numberOfPromotions} active promotions</p>
         </div>
 
         {
@@ -65,14 +51,14 @@ export default class customerCard extends Component {
           <input
             type="text"
             name="username"
-            value={this.state.username}
+            value={username}
             onChange={this.handleChange}
           />
           <label>I am around:</label>
           <input
             type="text"
             name="location"
-            value={this.state.location}
+            value={location}
             onChange={this.handleChange}
           />
           <input type="submit" value="UPDATE CUSTOMER" />

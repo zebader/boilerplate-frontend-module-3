@@ -39,3 +39,37 @@
 .promotion-worker-card-link:active{
   transform: scale(0.95)
 }
+.promotion-bar-card{
+  width:100%;
+  position: relative;
+  height: 150px;
+}
+.promotion-bar-card h4{
+  text-align:center;
+  margin:5% 0;
+}
+.promotion-bar-card a{
+  display: inline-block;
+}
+.promotion-bar-card p{
+  width: 60px;
+  text-align: center;
+}
+
+.promo-img-frame{
+  width: 60px;
+  height: 60px;
+  border-radius:50%;
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: inline-block;
+}
+.promo-img{
+  width:150%;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%)
+
+}
