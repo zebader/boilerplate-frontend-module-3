@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class PromotionProgressCard extends Component {
   render(){
-    console.log(this.props.totalPoints)
+    console.log(this.props.totalPoints, this.props.userPoints)
     return (
       <div>
       <div className="promo-img-frame">

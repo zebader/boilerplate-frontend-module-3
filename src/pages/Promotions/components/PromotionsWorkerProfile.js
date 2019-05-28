@@ -79,33 +79,33 @@ export default class PromotionsWorkerProfile extends Component {
             <div className="rating">
             <label>
               <input type="radio" name="rating" value="1" onChange={this.handleChange}/>
-              <span class="icon">★</span>
+              <span className="icon">★</span>
             </label>
             <label>
               <input type="radio" name="rating" value="2" onChange={this.handleChange}/>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
             </label>
             <label>
               <input type="radio" name="rating" value="3" onChange={this.handleChange}/>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>   
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>   
             </label>
             <label>
               <input type="radio" name="rating" value="4" onChange={this.handleChange}/>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
             </label>
             <label>
               <input type="radio" name="rating" value="5" onChange={this.handleChange}/>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
-              <span class="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
+              <span className="icon">★</span>
             </label>
             </div>
           </div>

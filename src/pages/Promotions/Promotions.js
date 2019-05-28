@@ -4,14 +4,15 @@ import { Link } from "react-router-dom";
 import BottomNavBar from '../../components/BottomNavBar'
 import PromotionsPromoCard from './components/PromotionsPromoCard'
 import promotionsService from '../../lib/promotions-service';
+import customerService from '../../lib/customer-service';
 import './css/promotions-page.css';
 
 class Promotions extends Component {
   state = {
     AllPromotions: null,
     "userType": "customer",
+    balance:0,
   };
-
   bodyBgDefault =() =>{
     const body = document.querySelector("body");
     body.classList.add("business-bg-color");
@@ -19,24 +20,35 @@ class Promotions extends Component {
     body.classList.remove("signup-bg-color-black");
     body.classList.remove("signup-bg-color-business");
   }
+  updateBalance = (newBalance) =>{
+    this.setState({balance : newBalance})
+  }
 
   componentDidMount() {
+
     this.bodyBgDefault();
+
     promotionsService.getPromotions()
     .then((promotions) => {
-      const selectedPromotions = promotions;
-      this.setState({AllPromotions:selectedPromotions});
+
+      customerService.getCustomer()
+      .then((customer) => {
+        
+        const selectedPromotions = promotions;
+        this.setState({AllPromotions:selectedPromotions, balance: customer.balance});
+
+      }).catch((err) => console.log(err)); 
       
     }).catch((err) => console.log(err));  
   }
 
   render() {
-   
+  
     const {AllPromotions} = this.state;
 
     return (
       <main>
-      <BottomNavBar />
+      <BottomNavBar  {...this.state} updateBalance={this.updateBalance}/>
       <section className="promotions-page">
         {
           <h1>All promotions</h1>

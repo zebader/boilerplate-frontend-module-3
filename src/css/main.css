@@ -496,14 +496,135 @@ a.worker-add-button,a.promotion-add-button{
 
 .rating:not(:hover) label input:checked ~ .icon,
 .rating:hover label:hover input ~ .icon {
-  color: #09f;
+  color: #ff9d2f;
 }
 
 .rating label input:focus:not(:checked) ~ .icon:last-child {
   color: #000;
-  text-shadow: 0 0 5px #09f;
+  text-shadow: 0 0 5px #ff9d2f;
 }
 
 .button-no-bottom{
   bottom:0;
 }
+
+.points-progress-bar-wrapper{
+  width: 100%;
+  background-color: #eee;
+  box-shadow: inset 0px 0px 7px -2px rgba(0,0,0,0.2);
+  height: 30px;
+  border-radius: 40px;
+  margin:5% 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.points-progress-bar{
+  width: 0%;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  height: 30px;
+  transform: skew(-5deg);
+  position: absolute;
+  left:0;
+  overflow:hidden;
+}
+
+.points-progress-bar-anim{
+  width: 20%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 100%);
+  height: 30px;
+  transform: skew(-5deg);
+  position: absolute;
+  left:35px;
+  overflow:hidden;
+  animation: Progress 1s ease-out infinite;
+}
+
+/*aniamtion ===================================*/
+
+@keyframes Progress {
+	0% {
+		left:0;
+	}
+	100% {
+		left:120%;
+	}
+}
+
+.promotions-profile{
+  background-color: #f9f7f7;
+  padding: 3% 3% 20% 3%;
+}
+.promotions-profile-wrapper{
+  width: 100%;
+  padding: 5% 0px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.promotions-profile-img{
+  width: 30%;
+  margin: 3% 7%;
+}
+.promotions-profile-img img{
+  width: 100%;
+}
+.promotions-profile-info{
+  width:70%;
+}
+
+.promotion-worker-card-link{
+  display: block;
+  margin: 3% 0;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
+  -moz-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
+  box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
+  transition: all 300ms;
+}
+.promotion-worker-card-link:active{
+  transform: scale(0.95)
+}
+.promotion-bar-card{
+  width:100%;
+  position: relative;
+  height: 150px;
+}
+.promotion-bar-card h4{
+  text-align:center;
+  margin:5% 0;
+}
+.promotion-bar-card a{
+  display: inline-block;
+}
+.promotion-bar-card p{
+  width: 60px;
+  text-align: center;
+}
+
+.promo-img-frame{
+  width: 60px;
+  height: 60px;
+  border-radius:50%;
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: inline-block;
+  transition:all 300ms;
+}
+.promo-img{
+  width:150%;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%)
+
+}
+

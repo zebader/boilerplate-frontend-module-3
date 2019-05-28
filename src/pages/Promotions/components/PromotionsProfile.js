@@ -19,7 +19,11 @@ export default class PromotionsProfile extends Component {
       promotions: [],
       workers: [],
       totalPoints:0,
+      userPoints:0,
+      balance:0,
+      progressBar:"",
   }};
+
   bodyBgDefault =() =>{
     const body = document.querySelector("body");
     body.classList.add("business-bg-color");
@@ -37,25 +41,58 @@ export default class PromotionsProfile extends Component {
     })
     return totalPointsMapped
   }
+  updateBalance = (newBalance) =>{
+    this.setState({balance : newBalance})
+  }
+
+  setPointsPosition = () =>{
+
+    const progressBar = document.querySelector('.points-progress-bar');
+    progressBar.style.width = this.state.progressBar;
+
+    }
+
 
   componentDidMount() {
     this.bodyBgDefault()
+    
     promotionsService.getAPromotion(this.props.match.params.id)
     .then((business) => {
-      const totalPoints = this.TotalPoints(business)
-      this.setState({...business, totalPoints});
+      customerService.getCustomer()
+      .then((customer) => {
+        const totalPoints = this.TotalPoints(business)
+        
+        let userPoints = 0;
+        
+        customer.pinnedbusiness.map((promotion) =>        
+        { 
+
+          if(promotion.business._id === business._id){
+            userPoints = promotion.points
+            return userPoints
+          }
+        })
+
+        let width = (Math.floor((userPoints / totalPoints)*100)).toString() + '%';
+       /*  console.log(userPoints,totalPoints) */
+        this.setState({...business, totalPoints, userPoints, balance:customer.balance,progressBar:width});
+
+        this.setPointsPosition();
+        
+      }).catch((err) => console.log(err)); 
+      
     })
     .catch((err) => console.log(err));
 
-
+    
   }
   
   render() {
-    const {username,email,imgUrl,location,promotions,workers, totalPoints }= this.state;
+    const {username,imgUrl,location,promotions,workers, totalPoints,userPoints }= this.state;
 
     return (
       <section>
-      <BottomNavBar />
+      <BottomNavBar {...this.state} updateBalance={this.updateBalance} />
       <article className="promotions-profile">
 
         <div className="promotions-profile-wrapper">
@@ -73,13 +110,17 @@ export default class PromotionsProfile extends Component {
         {
           promotions.map((promotion) =>        
             <Link key={promotion._id} to={`/promotions/${this.props.match.params.id}/promotions/${promotion._id}`} >
-              <PromotionProgressCard {...promotion} totalPoints={totalPoints}/>
+              <PromotionProgressCard {...promotion} totalPoints={totalPoints} userPoints={userPoints}/>
             </Link>
           )
         }
+          <div className="points-progress-bar-wrapper">
+            <div className="points-progress-bar">
+            <div className="points-progress-bar-anim"></div>
+            </div>
+          </div>
           </div>
  
-
           <div className="customer-page-togglebuttons">
             <div className="customer-page-buttonworkers">
               <h4> Tip a worker: </h4>
@@ -88,20 +129,15 @@ export default class PromotionsProfile extends Component {
           </div>
 
           {
-          
           workers.map((worker) =>
             <Link to={`/promotions/${this.props.match.params.id}/workers/${worker._id}/`} key={worker._id} className="worker-card-link">
               <PromotionsWorkerCard {...worker}/>
             </Link>
           )
-
           }
-
+ 
       </article>
       </section>
-
-
-
     )
   }
 }

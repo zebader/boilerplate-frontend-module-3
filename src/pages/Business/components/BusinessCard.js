@@ -26,7 +26,8 @@ export default class BusinessCard extends Component {
       console.log(business)
       this.setState({
         imgUrl: business.imgUrl
-      })  
+      })
+      console.log('submit img', this.state.imgUrl)
     })
     .catch((err) => console.log(err)); 
 
@@ -51,6 +52,7 @@ export default class BusinessCard extends Component {
         imgUrl,
         disable: false,
       })
+      console.log("STATE change", this.state.imgUrl)
     })
     .catch((error) => console.log(error))
   }
@@ -66,8 +68,7 @@ export default class BusinessCard extends Component {
   }
 
   render() {
-
-      console.log("STATE render", this.state)
+    console.log("STATE ", this.state.imgUrl)
     return (
       <div className="business-card-page">
 
