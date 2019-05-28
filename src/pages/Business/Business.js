@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import WorkerCard from './components/WorkerCard';
 import PromotionCard from './components/PromotionCard';
 import BusinessCard from './components/BusinessCard';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import businessService from '../../lib/business-service';
 import './css/business-page.css';
 
@@ -20,6 +19,12 @@ class Business extends Component {
     toggleWorker : true,
     togglePromotion : false,
   };
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
 
   toggleWorker = () => {
     this.setState({ toggleWorker: true, togglePromotion:false });
@@ -27,8 +32,10 @@ class Business extends Component {
   togglePromotion = () => {
     this.setState({ toggleWorker: false, togglePromotion:true });
   }
-
+  
   componentDidMount() {
+
+    this.bodyBgDefault();
 
     businessService.getBusiness()
     .then((business) => {
@@ -72,21 +79,18 @@ class Business extends Component {
           this.state.toggleWorker ?
                   
           business.workers.map((worker) =>
-          <ReactCSSTransitionGroup key={worker._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/business/workers/${worker._id}`}  className="worker-card-link">
+            <Link to={`/business/workers/${worker._id}`} key={worker._id} className="worker-card-link">
               <WorkerCard {...worker}/>
             </Link>
-          </ReactCSSTransitionGroup>
+  
           )
           :
 
           business.promotions.map((promotion) =>
 
-          <ReactCSSTransitionGroup key={promotion._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/business/promotions/${promotion._id}`}  className="worker-card-link">
+            <Link to={`/business/promotions/${promotion._id}`} key={promotion._id}  className="worker-card-link">
               <PromotionCard {...promotion}/>
             </Link>
-          </ReactCSSTransitionGroup>
           )
           
         }

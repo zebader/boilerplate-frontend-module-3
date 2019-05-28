@@ -3,7 +3,6 @@ import { withAuth } from "../../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import BottomNavBar from '../../components/BottomNavBar'
 import PromotionsPromoCard from './components/PromotionsPromoCard'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import promotionsService from '../../lib/promotions-service';
 import './css/promotions-page.css';
 
@@ -46,11 +45,9 @@ class Promotions extends Component {
                   
           AllPromotions.map((promotion) =>
 
-          <ReactCSSTransitionGroup key={promotion._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/promotions/${promotion._id}`}  className="worker-card-link">
+            <Link to={`/promotions/${promotion._id}`} key={promotion._id} className="worker-card-link">
               <PromotionsPromoCard {...promotion}/>
             </Link>
-          </ReactCSSTransitionGroup>
           )
           :
           <h3>There are no Promotions</h3>

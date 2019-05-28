@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import BottomNavBar from '../../../components/BottomNavBar'
 import PromotionsWorkerCard from './PromotionsWorkerCard'
 import PromotionProgressCard from './PromotionProgressCard'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class PromotionsProfile extends Component {
   
@@ -85,11 +84,9 @@ export default class PromotionsProfile extends Component {
           {
           
           workers.map((worker) =>
-          <ReactCSSTransitionGroup key={worker._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/promotions/${this.props.match.params.id}/workers/${worker._id}/`}  className="promotion-worker-card-link">
+            <Link to={`/promotions/${this.props.match.params.id}/workers/${worker._id}/`} key={worker._id} className="promotion-worker-card-link">
               <PromotionsWorkerCard {...worker}/>
             </Link>
-          </ReactCSSTransitionGroup>
           )
 
           }

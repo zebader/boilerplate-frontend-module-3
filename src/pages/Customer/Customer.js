@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import BottomNavBar from '../../components/BottomNavBar'
 import CustomerCard from './components/CustomerCard'
 import PromotionCard from './components/PromotionCard'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import customerService from '../../lib/customer-service';
 import './css/customer-page.css';
 
@@ -58,11 +57,10 @@ class Customer extends Component {
          { pinnedbusiness ?
                   
           pinnedbusiness.map((business) => {
-          return (<ReactCSSTransitionGroup key={business.business._id} transitionName="anim" transitionAppear={true} transitionAppearTimeout={5000} transitionEnter={false} transitionLeave={false} component="div" className="worker-anim">
-            <Link to={`/promotions/${business.business._id}`}  className="worker-card-link">
+          return (
+            <Link to={`/promotions/${business.business._id}`} key={business.business._id} className="worker-card-link">
               <PromotionCard {...business}/>
             </Link>
-          </ReactCSSTransitionGroup>
           )})
           
           :
