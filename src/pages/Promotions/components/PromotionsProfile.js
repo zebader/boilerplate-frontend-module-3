@@ -20,6 +20,12 @@ export default class PromotionsProfile extends Component {
       workers: [],
       totalPoints:0,
   }};
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
+  }
 
   TotalPoints = (business) => {
     const {promotions} = business
@@ -33,7 +39,7 @@ export default class PromotionsProfile extends Component {
   }
 
   componentDidMount() {
-
+    this.bodyBgDefault()
     promotionsService.getAPromotion(this.props.match.params.id)
     .then((business) => {
       const totalPoints = this.TotalPoints(business)
@@ -84,7 +90,7 @@ export default class PromotionsProfile extends Component {
           {
           
           workers.map((worker) =>
-            <Link to={`/promotions/${this.props.match.params.id}/workers/${worker._id}/`} key={worker._id} className="promotion-worker-card-link">
+            <Link to={`/promotions/${this.props.match.params.id}/workers/${worker._id}/`} key={worker._id} className="worker-card-link">
               <PromotionsWorkerCard {...worker}/>
             </Link>
           )

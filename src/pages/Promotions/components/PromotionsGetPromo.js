@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './../css/promotions-promo-card.css';
 import { Link } from "react-router-dom";
 import promotionsService from './../../../lib/promotions-service';
 
@@ -16,6 +15,12 @@ export default class PromotionsGetPromo extends Component {
       promoId:this.props.match.params.promoId,
       id:this.props.match.params.id,
       };
+  }
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
   }
 
   handleFormSubmit = event => {
@@ -36,6 +41,7 @@ export default class PromotionsGetPromo extends Component {
   };
 
   componentDidMount(){
+    this.bodyBgDefault()
     const {promoId, id} = this.state;
 
     promotionsService.getAPromotionsPromo(promoId,id)

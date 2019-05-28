@@ -111,6 +111,16 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   border: 1px solid #d6d5d5;
   outline: none;
 }
+.logout-navbar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logout-navbar img{
+  width: 5%;
+  margin: 2%;
+}
 
 /*SPLASH ==========================================================*/
 
@@ -308,12 +318,12 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   border-radius:20px;
   margin-left:10px;
 }
-
+/* BUSINESS ==================================================*/
 .business-page{
   padding: 3% 3% 20% 3%;
 }
 .business-bg-color{
-  background: #ffeaea;
+  background-color: #f9f7f7;
   background-attachment: fixed;
 }
 
@@ -381,4 +391,119 @@ a.worker-add-button,a.promotion-add-button{
   transform: scale(0.95)
 }
 
+/*WORKER CARDS AND OTHERS ============================== */
 
+.worker-card{
+  width: 100%;
+}
+.worker-card-wrapper{
+  width: 100%;
+  padding: 5% 0px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  
+}
+
+.worker-card-img{
+  margin: 3% 7%;
+  width: 60px;
+  height: 60px;
+  border-radius:50%;
+  overflow: hidden;
+  position: relative;
+  background: black;
+  display: inline-block;
+}
+.worker-card-img img{
+  width:150%;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%)
+}
+.worker-card-info{
+  width:70%;
+}
+.rating-wrapper{
+  display: block;
+  position: relative;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 70px;
+  line-height: 50px;
+  font-size: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 5% 0;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: #000;
+  text-shadow: 0 0 5px #09f;
+}
+
+.button-no-bottom{
+  bottom:0;
+}

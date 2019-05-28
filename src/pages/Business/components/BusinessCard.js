@@ -13,15 +13,20 @@ export default class BusinessCard extends Component {
       numberOfWorkers: 0,
       numberOfPromotions: 0,
       showModal: false,
+      disable: true,
       }
   };
 
   handleFormSubmit = event => {
     event.preventDefault();    
-    const { username, location } = this.state;
+    const { username, location, imgUrl } = this.state;
 
-    businessService.updateBusiness({ username, location })
-    .then(() => {
+    businessService.updateBusiness({ username, location, imgUrl })
+    .then((business) => {
+      console.log(business)
+      this.setState({
+        imgUrl: business.imgUrl
+      })  
     })
     .catch((err) => console.log(err)); 
 
@@ -35,6 +40,21 @@ export default class BusinessCard extends Component {
     this.setState({ showModal: !this.state.showModal });
   }
 
+  fileOnchange = (event) => {
+    const file = event.target.files[0];
+    const uploadData = new FormData()
+    uploadData.append('photo', file)
+
+    businessService.imageUpload(uploadData)
+    .then((imgUrl) => {
+      this.setState({
+        imgUrl,
+        disable: false,
+      })
+    })
+    .catch((error) => console.log(error))
+  }
+
   componentDidMount() {
 
     businessService.getBusiness()
@@ -46,6 +66,8 @@ export default class BusinessCard extends Component {
   }
 
   render() {
+
+      console.log("STATE render", this.state)
     return (
       <div className="business-card-page">
 
@@ -60,6 +82,8 @@ export default class BusinessCard extends Component {
         {
           this.state.showModal ?
         <form onSubmit={this.handleFormSubmit}>
+          <label>Upload a picture:</label>
+          <input type="file" onChange={this.fileOnchange}></input>
           <label>Your business name:</label>
           <input
             type="text"
@@ -74,7 +98,7 @@ export default class BusinessCard extends Component {
             value={this.state.location}
             onChange={this.handleChange}
           />
-          <input type="submit" value="BusinessUpdate" />
+         { this.state.disable ? <input type="submit" value="BusinessUpdate" disabled />:<input type="submit" value="BusinessUpdate"/>}
         </form>
         :
         null

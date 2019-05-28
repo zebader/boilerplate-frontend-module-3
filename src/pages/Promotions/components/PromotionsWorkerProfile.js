@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './../css/promotions-promo-card.css';
 import promotionsService from './../../../lib/promotions-service';
 
 export default class PromotionsWorkerProfile extends Component {
@@ -15,6 +14,12 @@ export default class PromotionsWorkerProfile extends Component {
       workerId:this.props.match.params.workerId,
       id:this.props.match.params.id,
       };
+  }
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-business");
   }
 
   handleFormSubmit = event => {
@@ -37,19 +42,19 @@ export default class PromotionsWorkerProfile extends Component {
   };
 
   componentDidMount(){
-
+    this.bodyBgDefault()
     const { workerId,id } = this.state;
 
     promotionsService.getAPromotionsWorker(workerId,id)
     .then((worker) => {
-      const selectedWorker = worker;
-      this.setState({...selectedWorker});
+      const {imgUrl, name, type} = worker;
+      this.setState({imgUrl, name, type});
     })
     .catch((err) => console.log(err)); 
   }
   
   render() {
-
+    console.log(this.state)
     return (
       <article className="worker-profile">
 
@@ -63,15 +68,48 @@ export default class PromotionsWorkerProfile extends Component {
             value={this.state.tips}
             onChange={this.handleChange}
           />
-          <label>Rating:</label>
-          <input
+{/*           <input
             type="number"
             name="rating"
             value={this.state.rating}
             onChange={this.handleChange}
-          />
-
-          <input type="submit" value="TIP !" />
+          /> */}
+          <label>Rating:</label>
+          <div className="rating-wrapper">
+            <div className="rating">
+            <label>
+              <input type="radio" name="rating" value="1" onChange={this.handleChange}/>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="2" onChange={this.handleChange}/>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="3" onChange={this.handleChange}/>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>   
+            </label>
+            <label>
+              <input type="radio" name="rating" value="4" onChange={this.handleChange}/>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            <label>
+              <input type="radio" name="rating" value="5" onChange={this.handleChange}/>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+              <span class="icon">★</span>
+            </label>
+            </div>
+          </div>
+          <input type="submit" value="TIP !" className="form-button-customer button-no-bottom"/>
         </form>
 
       </article>

@@ -69,6 +69,13 @@ class BusinessService {
       .delete(`/business/promotions/${id}/delete`)
       .then(({ data }) => data);
   } 
+// ======== PROMOTION SERVICES ============================================================= //
+
+  imageUpload(file) {
+    return this.business
+    .post('/business/image', file)
+    .then(({data}) => data)
+  }
 
   }
 

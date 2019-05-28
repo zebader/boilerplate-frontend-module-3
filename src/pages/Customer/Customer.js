@@ -19,12 +19,21 @@ class Customer extends Component {
     loading:true,
     numberOfPromotions: 0,
   };
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-black");
+    body.classList.remove("signup-bg-color-business");
+  }
   
   updateBalance = (newBalance) =>{
     this.setState({balance : newBalance})
   }
 
   componentDidMount() {
+
+    this.bodyBgDefault();
 
     customerService.getCustomer()
     .then((customer) => {

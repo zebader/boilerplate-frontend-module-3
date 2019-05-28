@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
+import businessImg from '../img/donut-shop.svg';
+import customerImg from '../img/male.svg';
 
 class Login extends Component {
   state = {
@@ -57,7 +59,7 @@ componentDidMount(){
               onChange={this.handleChange}
             />
             <span className="checkmark-customer" onClick={this.bodyBgCustomer}>
-              <img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt=""/>
+              <img src={customerImg} alt=""/>
               <h4>I am a Customer</h4>
             </span>
             </label>
@@ -70,7 +72,7 @@ componentDidMount(){
               onChange={this.handleChange}
             />
             <span className="checkmark-business" onClick={this.bodyBgBusiness}>
-              <img src="http://chittagongit.com/download/252559" alt=""/>
+              <img src={businessImg} alt=""/>
               <h4>I am a Business</h4>
             </span>
             </label>

@@ -12,7 +12,16 @@ class Promotions extends Component {
     "userType": "customer",
   };
 
+  bodyBgDefault =() =>{
+    const body = document.querySelector("body");
+    body.classList.add("business-bg-color");
+    body.classList.remove("signup-bg-color-customer");
+    body.classList.remove("signup-bg-color-black");
+    body.classList.remove("signup-bg-color-business");
+  }
+
   componentDidMount() {
+    this.bodyBgDefault();
     promotionsService.getPromotions()
     .then((promotions) => {
       const selectedPromotions = promotions;

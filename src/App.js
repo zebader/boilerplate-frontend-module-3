@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 
 import Navbar from "./components/Navbar";
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <Navbar />
+          <Route path="/" component={Navbar} />
           <Switch>
             <AnonRoute path="/" component={Home} exact/>
             <AnonRoute path="/signup" component={Signup} exact/>
