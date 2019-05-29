@@ -47,7 +47,6 @@ class PromotionsService {
       .put(`/promotions/${id}/promotions/${promotionid}/rate`)
       .then(({ data }) => data);
   }
-
   }
 
 const promotions = new PromotionsService();

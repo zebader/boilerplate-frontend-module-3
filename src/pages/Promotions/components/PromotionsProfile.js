@@ -127,7 +127,7 @@ export default class PromotionsProfile extends Component {
           <div className="customer-page-togglebuttons">
             <div className="customer-page-buttonworkers">
               <h4> Tip a worker: </h4>
-              <div className="selected-button"> </div>    
+              <div className="selected-button-customer"> </div>    
             </div>
           </div>
 

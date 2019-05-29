@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
 
 export default class PromotionProgressCard extends Component {
-
+  
   promoPosition = () =>{
-    /* pointer-events: none; */
+
     const mathValue = Math.floor((this.props.pointsToUnlock / this.props.totalPoints)*100)
     let finalLeft = (mathValue-7).toString() +'%';
+
+    let usedPromo = false;
+
+    this.props.userID.map((elem)=>{
+      if(elem === this.props.customerID){
+
+        return usedPromo = true;
+      }
+    })
 
     if(this.props.userPoints < this.props.pointsToUnlock){
       if(mathValue >= 85) {
@@ -22,6 +31,13 @@ export default class PromotionProgressCard extends Component {
 
         }};
     }else{
+      if(usedPromo){
+        return {
+          left: finalLeft,
+          position:"absolute",
+          pointerEvents:"none",
+          }
+      }
       if(mathValue >= 85) {
         return {
         left: "85%",
@@ -34,13 +50,21 @@ export default class PromotionProgressCard extends Component {
         }};
     }
   }
+  testFunc =()=>{
+    let isIt = false;
+    this.props.userID.map((elem)=>{
+      if(elem === this.props.customerID){
+        return isIt = true
+      }
+    })
+  }
 
   componentDidMount(){
     this.promoPosition();
+    this.testFunc();
   }
 
   render(){
-    console.log(this.props)
     return (
       <div style={this.promoPosition()}>
         <div className="promo-img-frame">
