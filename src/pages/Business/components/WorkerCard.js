@@ -10,7 +10,7 @@ export default class WorkerCard extends Component {
     const rating = document.getElementById(selectorString)
     console.log("id", rating)
 
-    if(this.props.rating === 1 || this.props.rating === 0){
+    if(this.props.rating === 1){
       rating.innerHTML = `Rating: <span style='color:#ff9d2f;font-size:1.5em;'>★</span>`    
     }else if(this.props.rating === 2){
       rating.innerHTML = `Rating: <span style='color:#ff9d2f;font-size:1.5em;'>★★</span>`
@@ -20,6 +20,8 @@ export default class WorkerCard extends Component {
       rating.innerHTML = `Rating: <span style='color:#ff9d2f;font-size:1.5em;'>★★★★</span>` 
     }else if(this.props.rating === 5){
       rating.innerHTML = `Rating: <span style='color:#ff9d2f;font-size:1.5em;'>★★★★★</span>` 
+    }else if(this.props.rating === 0){
+      rating.innerHTML = `Rating: No rating yet</span>` 
     }
   }
   componentDidMount(){

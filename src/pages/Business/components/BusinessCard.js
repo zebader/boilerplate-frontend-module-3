@@ -29,7 +29,7 @@ export default class BusinessCard extends Component {
         showModal:false,
       })
 
-      let blackBg = document.querySelector('.black-bg-modal');
+      let blackBg = document.querySelector('.bg-modal');
       blackBg.style.display = "none"
 
     })
@@ -44,15 +44,12 @@ export default class BusinessCard extends Component {
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal });
 
-    let blackBg = document.querySelector('.black-bg-modal');
+    let blackBg = document.querySelector('.bg-modal');
     if(blackBg.style.display === "block"){
-
       blackBg.style.display = "none"
-
     }else{
       blackBg.style.display = "block"
     }
-
   }
 
   fileOnchange = (event) => {
@@ -66,22 +63,24 @@ export default class BusinessCard extends Component {
         imgUrl,
         disable: false,
       })
-      console.log("STATE change", this.state.imgUrl)
     })
     .catch((error) => console.log(error))
   }
-  style = 
-  {
-  color: 'white',
-  background: '#e20088',
-  borderRadius: '50%',
-  width: '20px',
-  height:'20px',
-  display: 'inline-block',
-  textAlign: 'center',
-  lineHeight: '20px',
-}
-  
+  style =() => 
+  { 
+    let style = {
+    "color": 'white',
+    "background": '#e20088',
+    borderRadius: '50%',
+    width: '20px',
+    height:'20px',
+    display: 'inline-block',
+    textAlign: 'center',
+    lineHeight: '20px',
+  }
+    return style
+  }
+
   componentDidMount() {
 
 
@@ -111,8 +110,8 @@ export default class BusinessCard extends Component {
             </div>
 
             <div className="business-card-data">
-              <p>Workers: <span style={this.style}>{this.state.numberOfWorkers}</span> </p>
-              <p>Promotions: <span style={this.style}>{this.state.numberOfPromotions}</span> </p>
+              <p>Workers: <span style={this.style()}>{this.state.numberOfWorkers}</span> </p>
+              <p>Promotions: <span style={this.style()}>{this.state.numberOfPromotions}</span> </p>
             </div>
           </div>
         </div>
@@ -124,10 +123,10 @@ export default class BusinessCard extends Component {
           <div className="inputfile-wrapper"> 
 
           <input type="file" name="file" id="file" onChange={this.fileOnchange} className="inputfile"></input>
-          <label for="file" >
+          <label htmlFor="file" >
           { this.state.disable ?
-          <><div className="profile-card-img disabled-upload-img">
-           <img src="https://www.camisetascatedrales.com/wp-content/uploads/2018/04/upload-cloud-outline.png" alt=""/>
+          <><div className="profile-card-img">
+           <img src="https://www.camisetascatedrales.com/wp-content/uploads/2018/04/upload-cloud-outline.png"className="disabled-upload-img" alt=""/>
            </div>
             <p>Upload a picture</p>
           </>
