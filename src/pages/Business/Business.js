@@ -5,7 +5,9 @@ import WorkerCard from './components/WorkerCard';
 import PromotionCard from './components/PromotionCard';
 import BusinessCard from './components/BusinessCard';
 import businessService from '../../lib/business-service';
-import './css/business-page.css';
+import addWorker from './../../img/addworker.svg'
+import addPromo from './../../img/addpromo.svg'
+
 
 class Business extends Component {
   state = {
@@ -53,11 +55,11 @@ class Business extends Component {
       <main className="business-page">
       { this.state.toggleWorker ?
         <Link to={`/business/workers-add`} className="worker-add-button" >
-          ADD WORKER
+          <img src={addWorker} alt=""/>
         </Link>
       :
         <Link to={`/business/promotions-add`}  className="promotion-add-button">
-          ADD PROMOTION
+        <img src={addPromo} alt=""/>
         </Link>
       }
 

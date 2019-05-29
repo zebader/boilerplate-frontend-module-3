@@ -44,7 +44,7 @@ class PromotionsService {
 
   claimPromotion(promotionid,id){
     return this.promotions
-      .put(`/promotions/${id}/workers/${promotionid}/rate`)
+      .put(`/promotions/${id}/promotions/${promotionid}/rate`)
       .then(({ data }) => data);
   }
 

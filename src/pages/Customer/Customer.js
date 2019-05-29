@@ -58,7 +58,7 @@ class Customer extends Component {
           <div className="customer-page-togglebuttons">
             <div className="customer-page-buttonworkers">
               <h4> Your tipped places: </h4>
-              <div className="selected-button"></div>
+              <div className="selected-button-customer"></div>
             </div>
           </div>
         }

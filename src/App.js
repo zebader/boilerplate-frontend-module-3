@@ -28,6 +28,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
+          <div className="black-bg-modal"></div>
           <Route path="/" component={Navbar} />
           <Switch>
             <AnonRoute path="/" component={Home} exact/>
