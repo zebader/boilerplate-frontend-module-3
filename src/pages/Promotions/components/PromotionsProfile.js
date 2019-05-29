@@ -22,6 +22,7 @@ export default class PromotionsProfile extends Component {
       userPoints:0,
       balance:0,
       progressBar:"",
+      customerID:"",
   }};
 
   bodyBgDefault =() =>{
@@ -35,9 +36,11 @@ export default class PromotionsProfile extends Component {
     const {promotions} = business
 
     let totalPointsMapped = 0
-    promotions.map((promotion) =>        
-    { 
-      totalPointsMapped += promotion.pointsToUnlock
+    promotions.map((promotion) => {
+
+      if(totalPointsMapped <= promotion.pointsToUnlock){
+        totalPointsMapped = promotion.pointsToUnlock
+    }
     })
     return totalPointsMapped
   }
@@ -61,7 +64,6 @@ export default class PromotionsProfile extends Component {
       customerService.getCustomer()
       .then((customer) => {
         const totalPoints = this.TotalPoints(business)
-        
         let userPoints = 0;
         
         customer.pinnedbusiness.map((promotion) =>        
@@ -74,8 +76,7 @@ export default class PromotionsProfile extends Component {
         })
 
         let width = (Math.floor((userPoints / totalPoints)*100)).toString() + '%';
-       /*  console.log(userPoints,totalPoints) */
-        this.setState({...business, totalPoints, userPoints, balance:customer.balance,progressBar:width});
+        this.setState({...business, totalPoints, userPoints, balance:customer.balance,progressBar:width, customerID:customer._id});
 
         this.setPointsPosition();
         
@@ -88,7 +89,7 @@ export default class PromotionsProfile extends Component {
   }
   
   render() {
-    const {username,imgUrl,location,promotions,workers, totalPoints,userPoints }= this.state;
+    const {username,imgUrl,location, promotions,workers, totalPoints,userPoints,customerID }= this.state;
 
     return (
       <section>
@@ -107,13 +108,15 @@ export default class PromotionsProfile extends Component {
         
         <div className="promotion-bar-card">
         <h4> Avaliable promotions: </h4>
+
         {
           promotions.map((promotion) =>        
-            <Link key={promotion._id} to={`/promotions/${this.props.match.params.id}/promotions/${promotion._id}`} >
-              <PromotionProgressCard {...promotion} totalPoints={totalPoints} userPoints={userPoints}/>
+            <Link key={promotion._id} to={`/promotions/${this.props.match.params.id}/promotions/${promotion._id}`} className="promo-img-frame-wrapper">
+              <PromotionProgressCard {...promotion} totalPoints={totalPoints} userPoints={userPoints} customerID={customerID}/>
             </Link>
           )
         }
+
           <div className="points-progress-bar-wrapper">
             <div className="points-progress-bar">
             <div className="points-progress-bar-anim"></div>

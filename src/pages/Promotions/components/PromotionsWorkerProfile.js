@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import promotionsService from './../../../lib/promotions-service';
+import customerService from './../../../lib/customer-service';
 
 export default class PromotionsWorkerProfile extends Component {
   constructor(props){
@@ -13,6 +14,7 @@ export default class PromotionsWorkerProfile extends Component {
       tips: 0,
       workerId:this.props.match.params.workerId,
       id:this.props.match.params.id,
+      balance:0,
       };
   }
   bodyBgDefault =() =>{
@@ -47,8 +49,15 @@ export default class PromotionsWorkerProfile extends Component {
 
     promotionsService.getAPromotionsWorker(workerId,id)
     .then((worker) => {
-      const {imgUrl, name, type} = worker;
-      this.setState({imgUrl, name, type});
+
+      customerService.getCustomer()
+      .then((customer) => {
+    
+        const {imgUrl, name, type} = worker;
+        this.setState({imgUrl, name, type, balance:customer.balance});
+        
+      }).catch((err) => console.log(err)); 
+
     })
     .catch((err) => console.log(err)); 
   }
@@ -58,22 +67,19 @@ export default class PromotionsWorkerProfile extends Component {
     return (
       <article className="worker-profile">
 
-
         <form onSubmit={this.handleFormSubmit}>
 
-          <label>TIP {this.state.name} !</label>
+          <img src={this.state.imgUrl} alt=""/>
+          <h2 style={{textAlign:"center"}}>TIP {this.state.name} !</h2>
+          <p style={{textAlign:"center"}}>Your balance is: {this.state.balance}</p>
           <input
             type="number"
             name="tips"
             value={this.state.tips}
             onChange={this.handleChange}
+            max={this.state.balance}
           />
-{/*           <input
-            type="number"
-            name="rating"
-            value={this.state.rating}
-            onChange={this.handleChange}
-          /> */}
+
           <label>Rating:</label>
           <div className="rating-wrapper">
             <div className="rating">

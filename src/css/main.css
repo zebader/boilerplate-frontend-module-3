@@ -514,9 +514,9 @@ a.worker-add-button,a.promotion-add-button{
   box-shadow: inset 0px 0px 7px -2px rgba(0,0,0,0.2);
   height: 30px;
   border-radius: 40px;
-  margin:5% 0;
-  position: relative;
+  position: absolute;
   overflow: hidden;
+  bottom: 0;
 }
 
 .points-progress-bar{
@@ -595,7 +595,7 @@ a.worker-add-button,a.promotion-add-button{
 .promotion-bar-card{
   width:100%;
   position: relative;
-  height: 150px;
+  height: 170px;
 }
 .promotion-bar-card h4{
   text-align:center;

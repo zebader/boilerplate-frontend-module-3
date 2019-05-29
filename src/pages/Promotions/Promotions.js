@@ -30,15 +30,11 @@ class Promotions extends Component {
 
     promotionsService.getPromotions()
     .then((promotions) => {
-
       customerService.getCustomer()
       .then((customer) => {
-        
         const selectedPromotions = promotions;
         this.setState({AllPromotions:selectedPromotions, balance: customer.balance});
-
       }).catch((err) => console.log(err)); 
-      
     }).catch((err) => console.log(err));  
   }
 

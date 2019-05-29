@@ -73,7 +73,7 @@ export default class BusinessCard extends Component {
       <div className="business-card-page">
 
         <div className="business-card" onClick={this.toggleModal}>
-          <img src={this.props.imgUrl} alt={this.props.name}/>
+          <img src={this.state.imgUrl} alt={this.state.username}/>
           <h3>{this.state.username}</h3>
           <h4>{this.state.location}</h4>
           <p>workers: {this.state.numberOfWorkers}</p>

@@ -52,6 +52,7 @@ class BottomNavbar extends Component {
             name="balance"
             value={this.state.balance}
             onChange={this.handleChange}
+            min="0"
           />
           <input type="submit" value="Add TO WALLET" />
         </form>

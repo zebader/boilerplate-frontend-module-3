@@ -15,6 +15,7 @@ export default class PromotionsGetPromo extends Component {
       promoId:this.props.match.params.promoId,
       id:this.props.match.params.id,
       };
+      
   }
   bodyBgDefault =() =>{
     const body = document.querySelector("body");
