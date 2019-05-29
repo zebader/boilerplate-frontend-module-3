@@ -70,8 +70,20 @@ export default class BusinessCard extends Component {
     })
     .catch((error) => console.log(error))
   }
-
+  style = 
+  {
+  color: 'white',
+  background: '#e20088',
+  borderRadius: '50%',
+  width: '20px',
+  height:'20px',
+  display: 'inline-block',
+  textAlign: 'center',
+  lineHeight: '20px',
+}
+  
   componentDidMount() {
+
 
     businessService.getBusiness()
     .then((business) => {
@@ -99,8 +111,8 @@ export default class BusinessCard extends Component {
             </div>
 
             <div className="business-card-data">
-              <p>workers: {this.state.numberOfWorkers}</p>
-              <p>promotions: {this.state.numberOfPromotions}</p>
+              <p>Workers: <span style={this.style}>{this.state.numberOfWorkers}</span> </p>
+              <p>Promotions: <span style={this.style}>{this.state.numberOfPromotions}</span> </p>
             </div>
           </div>
         </div>

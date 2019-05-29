@@ -15,7 +15,7 @@ class Navbar extends Component {
         {isLoggedin ? (
           <>
             <img src="https://www.shareicon.net/download/2016/07/10/119999_arrows.ico" onClick={this.goBack}/>
-            <h2>TippMe</h2>
+            <h2>TippJar</h2>
             <img src="https://static.thenounproject.com/png/205237-200.png" onClick={logout}/>
           </>
         ) : null}
