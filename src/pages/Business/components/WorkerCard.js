@@ -6,8 +6,8 @@ export default class WorkerCard extends Component {
   numberToStar = () =>{
 
     const selectorString = (this.props._id).toString()
-    
     const rating = document.getElementById(selectorString)
+    
     console.log("id", rating)
 
     if(this.props.rating === 1){

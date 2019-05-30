@@ -6,7 +6,6 @@ export default class PromotionWorkerCard extends Component {
     const selectorString = (this.props._id).toString()
     
     const rating = document.getElementById(selectorString)
-    console.log("id", rating)
 
     if(this.props.rating === 1){
       rating.innerHTML = `Rating: <span style='color:#ff9d2f;font-size:1.5em;'>★</span>`    
