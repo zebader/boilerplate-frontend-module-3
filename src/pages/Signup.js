@@ -43,9 +43,19 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
 
-  componentDidMount(){
-    this.bodyBgDefault();
+  removeCanvas =()=>{
+    const canvas = document.querySelector('canvas');
+    if(!canvas){
+      return
+    }else{
+      canvas.style.display = "none"
+
+    }
   }
+componentDidMount(){
+  this.bodyBgDefault();
+  this.removeCanvas();
+}
 
   render() {
     const { username, password, email, location } = this.state;

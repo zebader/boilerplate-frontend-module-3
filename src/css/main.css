@@ -71,6 +71,8 @@ button{
   width: 100%;
   max-width: 450px;
   margin: 0 auto;
+  z-index: 1;
+  position: absolute;
 }
 
 .container{
@@ -149,11 +151,11 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background: linear-gradient(-45deg, #ff9d2f, #5c0037, #0e002f, #402482);
+/*   background: linear-gradient(-45deg, #ff9d2f, #5c0037, #0e002f, #402482);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite; */
 }
 .home-splash-title{
   width:100%;
@@ -365,7 +367,8 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
 .login-link-text-color a{
   color:#0e002f;
   font-size: 1em;
-  background-color: white;
+
+  background-color: rgba(255,255,255,0.6);
   padding: 2% 5%;
   border-radius:20px;
   margin-left:10px;
@@ -1061,4 +1064,13 @@ display: flex;
 }
 .paypal{
   width: 13%;
+}
+
+#gimmick {
+  display:block;
+  pointer-events:none;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 0;
 }

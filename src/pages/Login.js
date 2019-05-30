@@ -38,8 +38,18 @@ class Login extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+  removeCanvas =()=>{
+    const canvas = document.querySelector('canvas');
+    if(!canvas){
+      return
+    }else{
+      canvas.style.display = "none"
+
+    }
+  }
 componentDidMount(){
   this.bodyBgDefault();
+  this.removeCanvas();
 }
   render() {
     const { username, password } = this.state;

@@ -49,7 +49,7 @@ export default class PromotionProgressCard extends Component {
       }
       if(mathValue >= 85) {
         return {
-        left: "85%",
+        left: "82%",
         position:"absolute",
         background: "rgb(166, 255, 182)",
         borderRadius: "10px 10px 70px 70px",
