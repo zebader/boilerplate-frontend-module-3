@@ -83,7 +83,6 @@ export default class BusinessCard extends Component {
 
   componentDidMount() {
 
-
     businessService.getBusiness()
     .then((business) => {
       const selectedBusiness = business;
@@ -96,8 +95,7 @@ export default class BusinessCard extends Component {
 
     return (
       <div className="business-card-page">
-        <div>
-        </div>
+
         <div className="business-card-wrapper" >
           <img src="https://www.pngrepo.com/png/156718/170/pencil-hand-drawn-tool-outline.png" onClick={this.toggleModal} className="edit-button"/>
           <div className="business-card-img">
@@ -106,7 +104,7 @@ export default class BusinessCard extends Component {
           <div className="business-card-data-wrapper">
             <div className="business-card-title">
               <h3>{this.state.username}</h3>
-              <h4>{this.state.location}</h4>
+              <p style={{color:"#c7c7c7"}}>{this.state.location}</p>
             </div>
 
             <div className="business-card-data">
@@ -119,6 +117,7 @@ export default class BusinessCard extends Component {
         {
           this.state.showModal ?
         <form onSubmit={this.handleFormSubmit} className="modal-edit-form">
+        <h3>Update Business</h3>
         <span className="close-button" onClick={this.toggleModal}>x</span>
           <div className="inputfile-wrapper"> 
 

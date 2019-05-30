@@ -37,11 +37,27 @@ export default class PromotionsWorkerProfile extends Component {
     .catch((err) => console.log(err)); 
 
   }
-
   handleChange = event => {
     const { name, value } = event.target;
+
     this.setState({ [name]: value });
   };
+  closeModal = () => {
+    this.props.history.push(`/promotions/${this.state.id}`)
+  }
+  style =() => 
+  { 
+    let style = {
+    "color": 'white',
+    "background": '#ff6126',
+    borderRadius: '50%',
+    width: '20px',
+    height:'20px',
+    display: 'inline-block',
+    textAlign: 'center',
+    lineHeight: '20px',
+  }
+return style}
 
   componentDidMount(){
     this.bodyBgDefault()
@@ -67,11 +83,17 @@ export default class PromotionsWorkerProfile extends Component {
     return (
       <article className="worker-profile">
 
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="modal-edit-form">
+        <span className="close-button" onClick={this.closeModal}>x</span>
+          <h3 style={{textAlign:"center"}}>TIP {this.state.name} !</h3>
+          <div>
 
-          <img src={this.state.imgUrl} alt=""/>
-          <h2 style={{textAlign:"center"}}>TIP {this.state.name} !</h2>
-          <p style={{textAlign:"center"}}>Your balance is: {this.state.balance}</p>
+          <div className="profile-card-img" style={{left:"50%",transform:"translateX(-50%)",margin:"5% 0"}}>
+            <img src={this.state.imgUrl}/>
+          </div>
+
+          </div>
+          <p style={{textAlign:"center"}}>Your balance is: <span style={this.style()}>{this.state.balance}</span>€</p>
           <input
             type="number"
             name="tips"

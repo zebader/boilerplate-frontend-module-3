@@ -69,7 +69,7 @@ class BusinessService {
       .delete(`/business/promotions/${id}/delete`)
       .then(({ data }) => data);
   } 
-// ======== PROMOTION SERVICES ============================================================= //
+// ======== img SERVICES ============================================================= //
 
   imageUpload(file) {
     return this.business

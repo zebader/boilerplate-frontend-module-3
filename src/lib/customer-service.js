@@ -27,7 +27,15 @@ class CustomerService {
       .put(`/customer/wallet/update`, customer)
       .then(({ data }) => data);
   }
+// ======== img SERVICES ============================================================= //
+
+  imageUpload(file) {
+    return this.customer
+    .post('/business/image', file)
+    .then(({data}) => data)
   }
+}
+
 
 const Customer = new CustomerService();
 

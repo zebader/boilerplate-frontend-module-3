@@ -5,7 +5,6 @@ import BottomNavBar from '../../components/BottomNavBar'
 import CustomerCard from './components/CustomerCard'
 import PromotionCard from './components/PromotionCard'
 import customerService from '../../lib/customer-service';
-import './css/customer-page.css';
 
 class Customer extends Component {
   state = {

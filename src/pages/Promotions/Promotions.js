@@ -5,7 +5,6 @@ import BottomNavBar from '../../components/BottomNavBar'
 import PromotionsPromoCard from './components/PromotionsPromoCard'
 import promotionsService from '../../lib/promotions-service';
 import customerService from '../../lib/customer-service';
-import './css/promotions-page.css';
 
 class Promotions extends Component {
   state = {
@@ -47,7 +46,7 @@ class Promotions extends Component {
       <BottomNavBar  {...this.state} updateBalance={this.updateBalance}/>
       <section className="promotions-page">
         {
-          <h1>All promotions</h1>
+          <h1 style={{textAlign:"center"}}>Tip and win!</h1>
         }
         {
           <div className="customer-page-togglebuttons">

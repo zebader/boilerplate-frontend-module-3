@@ -101,8 +101,10 @@ export default class PromotionsProfile extends Component {
             <img src={imgUrl} alt={username}/>
           </div>
           <div className="promotions-profile-info">
-            <h4>{username}</h4>
+            <h3>{username}</h3>
             <h5>{location}</h5>
+          <img src="https://image.flaticon.com/icons/svg/149/149984.svg" onClick={this.toggleModal} className="edit-button-promo-profile "/>
+
           </div>
         </div>
         
