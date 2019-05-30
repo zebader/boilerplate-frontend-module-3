@@ -11,27 +11,27 @@ class CustomerService {
 
   getCustomer() {
     return this.customer
-      .get("/customer")
+      .get("/api/customer")
       .then(({ data }) => data);
   }
 
   updateCustomer(customer){
     return this.customer
-      .put(`/customer/update`, customer)
+      .put(`/api/customer/update`, customer)
       .then(({ data }) => data);
   }
   // ======== wallet SERVICES ======================================================== //
 
   updateWallet(customer){
     return this.customer
-      .put(`/customer/wallet/update`, customer)
+      .put(`/api/customer/wallet/update`, customer)
       .then(({ data }) => data);
   }
 // ======== img SERVICES ============================================================= //
 
   imageUpload(file) {
     return this.customer
-    .post('/business/image', file)
+    .post('/api/business/image', file)
     .then(({data}) => data)
   }
 }

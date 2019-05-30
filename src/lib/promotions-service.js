@@ -11,13 +11,13 @@ class PromotionsService {
 
   getPromotions() {
     return this.promotions
-      .get("/promotions")
+      .get("/api/promotions")
       .then(({ data }) => data);
   }
   
   getAPromotion(id) {
     return this.promotions
-      .get(`/promotions/${id}`)
+      .get(`/api/promotions/${id}`)
       .then(({ data }) => data);
   }
 
@@ -25,12 +25,12 @@ class PromotionsService {
 
   getAPromotionsWorker(workerid,id) {
     return this.promotions
-      .get(`/promotions/${id}/workers/${workerid}`)
+      .get(`/api/promotions/${id}/workers/${workerid}`)
       .then(({ data }) => data);
   }
   updateTipWorker(worker,workerid,id){
     return this.promotions
-      .put(`/promotions/${id}/workers/${workerid}/rate`, worker)
+      .put(`/api/promotions/${id}/workers/${workerid}/rate`, worker)
       .then(({ data }) => data);
   }
   
@@ -38,13 +38,13 @@ class PromotionsService {
 
   getAPromotionsPromo(promotionid,id) {
     return this.promotions
-      .get(`/promotions/${id}/promotions/${promotionid}`)
+      .get(`/api/promotions/${id}/promotions/${promotionid}`)
       .then(({ data }) => data);
   }
 
   claimPromotion(promotionid,id){
     return this.promotions
-      .put(`/promotions/${id}/promotions/${promotionid}/rate`)
+      .put(`/api/promotions/${id}/promotions/${promotionid}/rate`)
       .then(({ data }) => data);
   }
   }

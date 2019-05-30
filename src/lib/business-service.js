@@ -11,69 +11,69 @@ class BusinessService {
 
   getBusiness() {
     return this.business
-      .get("/business")
+      .get("/api/business")
       .then(({ data }) => data);
   }
 
   updateBusiness(business){
     return this.business
-      .put(`/business/update`, business)
+      .put(`/api/business/update`, business)
       .then(({ data }) => data);
   }
   // ======== WORKER SERVICES ======================================================== //
 
   getAWorker(id) {
     return this.business
-      .get(`/business/workers/${id}`)
+      .get(`/api/business/workers/${id}`)
       .then(({ data }) => data);
   }
 
   addWorker(worker){
     return this.business
-      .post(`/business/workers-add`, worker)
+      .post(`/api/business/workers-add`, worker)
       .then(({ data }) => data);
   }
 
   updateWorker(worker,id){
     return this.business
-      .put(`/business/workers/${id}/update`, worker)
+      .put(`/api/business/workers/${id}/update`, worker)
       .then(({ data }) => data);
   }
   
   deleteWorker(id){
     return this.business
-      .delete(`/business/workers/${id}/delete`)
+      .delete(`/api/business/workers/${id}/delete`)
       .then(({ data }) => data);
   }
   // ======== PROMOTION SERVICES ============================================================= //
 
   getAPromotion(id) {
     return this.business
-      .get(`/business/promotions/${id}`)
+      .get(`/api/business/promotions/${id}`)
       .then(({ data }) => data);
   }
   addPromotion(promotion){
     return this.business
-      .post(`/business/promotions-add`, promotion)
+      .post(`/api/business/promotions-add`, promotion)
       .then(({ data }) => data);
   }
 
   updatePromotion(promotion,id){
     return this.business
-      .put(`/business/promotions/${id}/update`, promotion)
+      .put(`/api/business/promotions/${id}/update`, promotion)
       .then(({ data }) => data);
   }
   
   deletePromotion(id){
     return this.business
-      .delete(`/business/promotions/${id}/delete`)
+      .delete(`/api/business/promotions/${id}/delete`)
       .then(({ data }) => data);
   } 
 // ======== img SERVICES ============================================================= //
 
   imageUpload(file) {
     return this.business
-    .post('/business/image', file)
+    .post('/api/business/image', file)
     .then(({data}) => data)
   }
 

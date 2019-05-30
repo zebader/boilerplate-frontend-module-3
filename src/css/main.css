@@ -107,7 +107,6 @@ form{
   border: 5px solid #eee;
   border-radius:20px;
   background: white;
-  -webkit-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   -moz-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   transition: all 300ms;
@@ -127,11 +126,8 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
 .logout-navbar{
   width: 100%;
   max-width: 450px;
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-between;
   justify-content: space-between;
-  -webkit-align-items: center;
   align-items: center;
   position: fixed;
   background: #f9f7f7;
@@ -151,11 +147,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-/*   background: linear-gradient(-45deg, #ff9d2f, #5c0037, #0e002f, #402482);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite; */
 }
 .home-splash-title{
   width:100%;
@@ -189,7 +180,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   font-style: italic;
   position: relative;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   height: 80px;
   width: 80%;
@@ -255,9 +245,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   width:45%;
   display: block;
   position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .radio-checked input{
@@ -348,7 +335,6 @@ input[type="text"],input[type="number"],input[type="password"],input[type="email
   font-style: italic;
   position: relative;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: -30px;
   height: 40px;
@@ -419,7 +405,6 @@ a.worker-add-button,a.promotion-add-button{
   bottom: 0;
   margin: 15px 0;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   padding: 15px;
   border: none;
@@ -507,13 +492,9 @@ width: 60px;}
 .business-card-data-wrapper{
   width: 100%;
   padding: 5% 0px;
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: space-between;
   justify-content: space-between;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   top: -30px;
   position: relative;
@@ -539,13 +520,9 @@ width: 60px;}
 .worker-card-wrapper{
   width: 100%;
   padding: 5% 0px;
-  display: -webkit-flex;
   display: flex;
-  -webkit-justify-content: center;
   justify-content: center;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-flex-wrap: nowrap;
   flex-wrap: nowrap;
   position: relative;
   
@@ -641,7 +618,6 @@ img.disabled-upload-img{
   position: absolute;
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
 }
 
@@ -839,7 +815,6 @@ img.disabled-upload-img{
   padding: 3%;
   right: 3%;
   top: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   border-radius: 10px;
   box-shadow: 0px 8px 16px -12px rgba(0,0,0,0.33);
@@ -851,8 +826,6 @@ img.disabled-upload-img{
   background-color: white;
   border: 1px solid #eee;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
-  -moz-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   transition: all 300ms;
 }
@@ -886,7 +859,6 @@ img.disabled-upload-img{
   display: inline-block;
   transition: all 300ms;
   left: 50%;
-  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 .promo-img{
@@ -979,8 +951,6 @@ div.selected-button{
   background-color: white;
   border: 1px solid #eee;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
-  -moz-box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   box-shadow: 0px 0px 35px -51px rgba(0,0,0,0.38);
   transition: all 300ms;
 }
@@ -1039,7 +1009,6 @@ div.selected-button{
   position: absolute;
   top: -60px;
   left: 50%;
-  -webkit-transform: translateY(-50%);
   transform: translate(-50%);
   width: 80%;
 }
@@ -1047,7 +1016,6 @@ div.selected-button{
   position: absolute;
   top: 20%;
   left: 40%;
-  -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 1.5em;
   font-weight: 700;
