@@ -785,10 +785,9 @@ img.disabled-upload-img{
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+  background:white;
 }
-.promotions-profile-img img{
-  width: 100%;
-}
+
 .promotions-profile-img img{
   height: 100%;
   position: absolute;
