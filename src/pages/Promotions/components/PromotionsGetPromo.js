@@ -55,14 +55,16 @@ export default class PromotionsGetPromo extends Component {
   render() {
 
     return (
-      <article className="promo-profile">
+      <article className="worker-profile">
 
         <form onSubmit={this.handleFormSubmit}>
         <div className="promotion-get-wrapper">
-          <h2>{this.state.name}</h2>
-          <img src={this.state.imgUrl} alt=""/>
+          <h3>{this.state.name}</h3>
+          <div className="profile-card-img" style={{left:"50%",transform:"translateX(-50%)",margin:"5% 0"}}>
+           <img src={this.state.imgUrl} alt=""/>
+          </div>
         </div>
-            <input type="submit" value="GET PROMO!"/>
+            <input type="submit" value="GET PROMO!" className="form-button-customer button-no-bottom"/>
         </form>
 
       </article>
