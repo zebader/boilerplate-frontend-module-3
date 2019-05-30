@@ -60,7 +60,9 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: black;
   -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
-
+button{
+  outline: none;
+}
 /*MAIN ==========================================================*/
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=K2D:400,700i&display=swap');
@@ -916,14 +918,15 @@ img.disabled-upload-img{
   align-items: center;
   position:fixed;
   bottom: 0;
+  background: #e0e0e0;
 }
 .bottom-navbar-wrapper button, .bottom-navbar-wrapper a{
-  width: 33%;
-  background-color: red;
-  padding: 5% 0;
-  color:white;
-  text-align:center;
-  border:none;
+    width: 33%;
+    background-color: rgba(0,0,0,0);
+    padding: 3% 0;
+    color: white;
+    text-align: center;
+    border:none;
 }
 .customer-card{
   width: 100%;
@@ -991,14 +994,6 @@ div.selected-button{
   position:fixed;
   bottom: 0;
 }
-.bottom-navbar-wrapper button{
-  width: 33%;
-  background-color: red;
-  padding: 5% 0;
-  color:white;
-  text-align:center;
-  border:none;
-}
 
 /* Progress animation ======================= */
 .pulse{
@@ -1026,4 +1021,44 @@ div.selected-button{
 }
 .test img{
   display: none;
+}
+
+/*wallet =================================*/
+
+.form-wallet{
+  position: fixed;
+    bottom: 95px;
+}
+.wallet-button{
+  position: relative;
+}
+.wallet-button img{
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translate(-50%);
+  width: 80%;
+}
+.wallet-button p{
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  font-weight: 700;
+
+}
+button.paypal-wrapper{
+width: 100%;
+display: flex;
+    justify-content: center;
+}
+.paypal-wrapper p{
+  line-height: 30px;
+  font-size: 1.5em;
+}
+.paypal{
+  width: 13%;
 }

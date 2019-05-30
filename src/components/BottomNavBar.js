@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import customerService from '../lib/customer-service';
 import { Link } from "react-router-dom";
+import customerImg from './../img/male.svg'
+import promoImg from './../img/promotion.svg'
+import walletImg from './../img/wallet.svg'
 
 class BottomNavbar extends Component {
 
@@ -44,8 +47,8 @@ class BottomNavbar extends Component {
       <div className="bottom-navbar-wrapper">
       {
           this.state.showModal ?
-        <form onSubmit={this.handleFormSubmit}>
-
+        <form onSubmit={this.handleFormSubmit} className="form-wallet">
+        <span className="close-button" onClick={this.toggleModal}>x</span>
           <label>Add $ to your wallet:</label>
           <input
             type="number"
@@ -54,14 +57,27 @@ class BottomNavbar extends Component {
             onChange={this.handleChange}
             min="0"
           />
-          <input type="submit" value="Add TO WALLET" />
+          <button type="submit" value="ADD €" className="form-button-customer paypal-wrapper">
+           <img src="http://nuamedia.com.au/wp-content/uploads/2019/02/paypal-logo.png" alt="" className="paypal"/><p>ADD CASH</p>
+          </button>
         </form>
         :
         null
         }
-        <Link to={`/customer`}><button>Profile</button></Link>
-        <button onClick={this.toggleModal}>WALLET actual balance:{this.props.balance}</button>
-        <Link to={`/promotions`}><button>Promos</button></Link>
+        <Link to={`/customer`}>
+          <button>
+            <img src={customerImg} alt=""/>
+          </button>
+        </Link>
+          <button onClick={this.toggleModal} className="wallet-button">
+           <img src={walletImg} alt=""/>
+            <p>{this.props.balance}€ </p>
+          </button>
+        <Link to={`/promotions`}>
+          <button>
+            <img src={promoImg} alt=""/>
+          </button>
+        </Link>
       </div>
 
       
