@@ -1,10 +1,10 @@
 # Project Name
 
-KING OF TIPS
+TIPPJAR
 
 ## Description
 
-King of Tips is an app that help business to improve the customer service and the customer retention/adqusition by creating a gamifiyed promotion, where the customers can tip the workers and get points in exchange to get exclusive discounts or gifts.
+TIPPJAR is an app that help business to improve the customer service and the customer retention/adqusition by creating a gamifiyed promotion, where the customers can tip the workers and get points in exchange to get exclusive discounts or gifts.
 
 ## User Stories
 
